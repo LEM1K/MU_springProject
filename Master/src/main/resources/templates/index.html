@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/indexcss.css}"/>
+
+    <title>Welcome MU</title>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h2 class="title_txt">MU</h2>
+    </header>
+    <main class="content">
+        <h1 class="welcome_txt">Welcome
+            <br/>MU
+        </h1>
+        <section class="btns">
+            <button class="login_btn" onclick="location.href='/member/login'">
+                LOG-IN
+            </button>
+            <br/>
+            <button class="signup_btn" onclick="location.href='/member/signup'">
+                SIGN-UP
+            </button>
+        </section>
+    </main>
+
+    <footer class="foot">
+        Made by LEM1K
+        <br/>
+        <p>
+            <img class="insta_img" th:src="@{img/insta.png}" alt="instagram icon">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img class="github_img" th:src="@{img/github.png}" alt="github icon">
+        </p>
+    </footer>
+</div>
+
+<script th:src="@{js/indexjs.js}"></script>
+</body>
+</html>

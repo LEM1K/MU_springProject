@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{../css/signupcss.css}">
+    <title>Sign Up</title>
+</head>
+<body>
+<header>
+    <h2 class="title_txt">MU</h2>
+</header>
+<div class="container">
+    <h3 class="signup_txt">LOG IN</h3>
+    <main class="content">
+        <form class="signup_form">
+            <div class="id_label">ID</div>
+            <input class="id_field" type="text">
+            <button class="id_check">중복확인</button>
+            <div class="pw_label">PW</div>
+            <input class="pw_field" type="password">
+            <div class="pwcheck_label">PW_CHECK</div>
+            <input class="pwcheck_field" type="password">
+            <div class="email_label">E-MAIL</div>
+            <input class="email_field" type="text">
+            <div class="phone_label">phone</div>
+            <input class="phone_field" type="text">
+            <button class="signup_btn">
+                회원가입
+            </button>
+        </form>
+        <button class="cancel_btn" onclick="location.href='/'">
+            취소
+        </button>
+    </main>
+
+</div>
+<footer class="foot">
+    Made by LEM1K
+    <br/>
+    <p>
+        <img class="insta_img" style="cursor:pointer" th:src="@{../img/insta.png}" alt="instagram icon">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img class="github_img" style="cursor:pointer" th:src="@{../img/github.png}" alt="github icon">
+    </p>
+</footer>
+<script th:src="@{../js/signupjs.js}"></script>
+</body>
+</html>

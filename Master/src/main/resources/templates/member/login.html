@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{../css/logincss.css}"/>
+    <title>Log In</title>
+</head>
+<body>
+<header>
+    <h2 class="title_txt">MU</h2>
+</header>
+<div class="container">
+    <h3 class="login_txt">LOG IN</h3>
+    <main class="content">
+        <form class="login_form">
+            <div class="id_label">ID</div>
+            <input type="text" class="id_field">
+            <br/>
+            <div class="pw_label">PW</div>
+            <input type="password" class="pw_field">
+            <br/>
+            <button class="login_btn">
+                로그인
+            </button>
+        </form>
+        <button class="kakao_btn">
+            카카오톡 로그인
+        </button>
+    </main>
+</div>
+<footer class="foot">
+    Made by LEM1K
+    <br/>
+    <p>
+        <img class="insta_img" style="cursor:pointer" th:src="@{../img/insta.png}" alt="instagram icon">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img class="github_img" style="cursor:pointer" th:src="@{../img/github.png}" alt="github icon">
+    </p>
+</footer>
+<script th:src="@{../js/loginjs.js}"></script>
+</body>
+</html>

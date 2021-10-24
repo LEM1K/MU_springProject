@@ -1,0 +1,213 @@
+* {
+    font-family: 'Staatliches', cursive,'Nanum Gothic Coding', monospace;
+    background-color:floralwhite;
+}
+
+.title_txt{
+    font-size: 2.5rem;
+    padding:10px;
+    margin-bottom:20px;
+    border-bottom: 1px solid gray;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.signup_txt {
+    font-size: 2rem;
+    margin-left: 15px;
+}
+
+.id_label {
+    display: flex;
+    flex-direction: column;
+}
+
+.pw_label{
+    display: flex;
+    flex-direction: column;
+    margin-top:30px;
+}
+
+.pwcheck_label{
+    display: flex;
+    flex-direction: column;
+    margin-top:30px;
+}
+
+.email_label{
+    display: flex;
+    flex-direction: column;
+    margin-top:30px;
+}
+
+.phone_label{
+    display: flex;
+    flex-direction: column;
+    margin-top:30px;
+}
+
+
+.id_field {
+    font-family: 'Nanum Gothic Coding', monospace;
+    width: 250px;
+    height: 28px;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color:white;
+    font-size: 1.3rem;
+    margin-bottom:10px;
+}
+
+.id_check {
+    transition: all 0.5s;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size:0.8rem;
+    color:white;
+    background-color:black;
+    width:125px;
+    height:20px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border:none;
+    border-radius:1ch;
+    cursor: pointer;
+}
+
+.id_check:active{
+    background-color:white;
+    color:black;
+}
+
+.pw_field {
+    font-family: 'Nanum Gothic Coding', monospace;
+    width: 250px;
+    height: 28px;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color:white;
+    font-size: 1.3rem;
+    margin-bottom:10px;
+}
+
+.pwcheck_field {
+    font-family: 'Nanum Gothic Coding', monospace;
+    width: 250px;
+    height: 28px;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color:white;
+    font-size: 1.3rem;
+    margin-bottom:10px;
+}
+
+.email_field {
+    font-family: 'Nanum Gothic Coding', monospace;
+    width: 250px;
+    height: 28px;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color:white;
+    font-size: 1.3rem;
+    margin-bottom:10px;
+}
+
+.phone_field {
+    font-family: 'Nanum Gothic Coding', monospace;
+    width: 250px;
+    height: 28px;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color:white;
+    font-size: 1.3rem;
+    margin-bottom:30px;
+}
+
+.signup_btn {
+    transition: all 0.5s;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size:1.3rem;
+    color:white;
+    background-color:black;
+    display: flex;
+    flex-direction: column;
+    width:260px;
+    height:40px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border:none;
+    border-radius:1ch;
+    cursor: pointer;
+}
+
+.signup_btn:active {
+    background-color:white;
+    color:black;
+}
+
+.cancel_btn {
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size:1.3rem;
+    font-weight: bold;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    width:260px;
+    height:40px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius:1ch;
+    border:none;
+    cursor: pointer;
+}
+
+.cancel_btn:active {
+    transition: all 0.5s;
+    background-color:gray;
+    color:white;
+}
+
+.signup_form {
+    font-size:1.3rem;
+}
+
+.foot{
+    font-size: 1.2rem;
+    border-top:1px solid gray;
+    padding:20px;
+    text-align:right;
+}
+.insta_img {
+    transition: all 0.5s;
+    width:30px;
+    height:30px;
+}
+.github_img{
+    transition: all 0.5s;
+    width:30px;
+    height:30px;
+}
+.insta_img:hover{
+    filter:opacity(40%)
+}
+.github_img:hover{
+    filter:opacity(40%)
+}
