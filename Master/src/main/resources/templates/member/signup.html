@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
@@ -15,21 +15,22 @@
     <h2 class="title_txt">MU</h2>
 </header>
 <div class="container">
-    <h3 class="signup_txt">LOG IN</h3>
+
+    <h3 class="signup_txt">SIGN UP</h3>
     <main class="content">
-        <form class="signup_form">
+        <form class="signup_form" th:action="@{/member/signup}" method="post">
             <div class="id_label">ID</div>
-            <input class="id_field" type="text">
-            <button class="id_check">중복확인</button>
+            <input class="id_field" type="text" name="username">
+            <button type="button" id="username" class="id_check" onclick="idCheck()">중복확인</button>
             <div class="pw_label">PW</div>
-            <input class="pw_field" type="password">
-            <div class="pwcheck_label">PW_CHECK</div>
-            <input class="pwcheck_field" type="password">
+            <input class="pw_field" type="password" name="password">
+            <!-- <div class="pwcheck_label">PW_CHECK</div>
+             <input class="pwcheck_field" type="password">
             <div class="email_label">E-MAIL</div>
-            <input class="email_field" type="text">
+            <input class="email_field" type="text" name="email">
             <div class="phone_label">phone</div>
-            <input class="phone_field" type="text">
-            <button class="signup_btn">
+            <input class="phone_field" type="text" name="phone"> -->
+            <button type="submit" class="signup_btn">
                 회원가입
             </button>
         </form>
@@ -39,15 +40,28 @@
     </main>
 
 </div>
-<footer class="foot">
-    Made by LEM1K
-    <br/>
-    <p>
-        <img class="insta_img" style="cursor:pointer" th:src="@{../img/insta.png}" alt="instagram icon">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img class="github_img" style="cursor:pointer" th:src="@{../img/github.png}" alt="github icon">
-    </p>
+<footer class="foot" th:replace="fragments/common :: footer">
 </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function idCheck() {
+        const username = document.querySelector('.id_field').value;
+
+        $.ajax({
+            url: `/idCheck/` + username,
+            type: `GET`,
+            success: function(count) {
+
+                if(count === 1) {
+                    alert('사용 가능한 아이디입니다!')
+                }
+                else {
+                    alert('해당 아이디로 가입한 회원이 존재합니다...')
+                }
+            }
+        });
+    }
+</script>
 <script th:src="@{../js/signupjs.js}"></script>
 </body>
 </html>

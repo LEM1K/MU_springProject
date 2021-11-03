@@ -34,6 +34,20 @@
     font-size:1.3rem;
 }
 
+.error_text {
+    margin-top: 20px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    text-align: center;
+    vertical-align: middle;
+    background: brown;
+    width: 280px;
+    height:43px;
+    color:white;
+    margin-bottom: 20px;
+}
+
 .id_label {
     display: flex;
     flex-direction: column;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
@@ -16,15 +16,22 @@
 </header>
 <div class="container">
     <h3 class="login_txt">LOG IN</h3>
+
     <main class="content">
-        <form class="login_form">
+        <div class="error_text" th:if="${param.error}">
+            <br/>
+            아이디 혹은 비밀번호를 확인해주세요
+        </div>
+        <form class="login_form" th:action="@{/member/login}" method="post">
+
             <div class="id_label">ID</div>
-            <input type="text" class="id_field">
+            <input type="text" class="id_field" name="username">
             <br/>
             <div class="pw_label">PW</div>
-            <input type="password" class="pw_field">
+            <input type="password" class="pw_field" name="password" >
             <br/>
-            <button class="login_btn">
+
+            <button type="submit" class="login_btn">
                 로그인
             </button>
         </form>
@@ -33,14 +40,7 @@
         </button>
     </main>
 </div>
-<footer class="foot">
-    Made by LEM1K
-    <br/>
-    <p>
-        <img class="insta_img" style="cursor:pointer" th:src="@{../img/insta.png}" alt="instagram icon">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img class="github_img" style="cursor:pointer" th:src="@{../img/github.png}" alt="github icon">
-    </p>
+<footer class="foot" th:replace="fragments/common :: footer">
 </footer>
 <script th:src="@{../js/loginjs.js}"></script>
 </body>

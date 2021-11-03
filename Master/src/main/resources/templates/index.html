@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
@@ -21,24 +21,17 @@
             <br/>MU
         </h1>
         <section class="btns">
-            <button class="login_btn" onclick="location.href='/member/login'">
+            <button class="login_btn" th:onclick="@{location.href='/member/login'}">
                 LOG-IN
             </button>
             <br/>
-            <button class="signup_btn" onclick="location.href='/member/signup'">
+            <button class="signup_btn" th:onclick="@{location.href='/member/signup'}">
                 SIGN-UP
             </button>
         </section>
     </main>
 
-    <footer class="foot">
-        Made by LEM1K
-        <br/>
-        <p>
-            <img class="insta_img" th:src="@{img/insta.png}" alt="instagram icon">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <img class="github_img" th:src="@{img/github.png}" alt="github icon">
-        </p>
+    <footer class="foot" th:replace="fragments/common :: footer">
     </footer>
 </div>
 
