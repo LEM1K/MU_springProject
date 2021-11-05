@@ -8,12 +8,16 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "member")
+@NoArgsConstructor
 public class Member {
 
     @Id
@@ -35,4 +39,13 @@ public class Member {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private List<Role> roles = new ArrayList<>();
+
+
+    @Builder
+    public Member(Long id, String username, String password, boolean enable) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.enable = enable;
+    }
 }
