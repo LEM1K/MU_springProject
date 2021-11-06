@@ -28,7 +28,17 @@ public class MemberDto {
     @Size(min = 2, max = 20, message = "2 ~ 20 자 사이로 입력 해주세요")
     private String password;
 
+    private String pwCheck;
+
+    @NotBlank(message = "이메일은 필수 입력 값입니다.")
+    @Email(message = "이메일 형식을 맞춰 주세요.")
+    private String email;
+
+    @NotBlank(message = "핸드폰 번호는 필수 입력 값입니다.")
+    private String phone;
+
     private Boolean enable;
+
 
 
     public Member toEntity() {
@@ -36,6 +46,8 @@ public class MemberDto {
                 .id(id)
                 .username(username)
                 .password(password)
+                .email(email)
+                .phone(phone)
                 .enable(enable)
                 .build();
     }

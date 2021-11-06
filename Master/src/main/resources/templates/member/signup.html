@@ -23,18 +23,25 @@
                 <input class="id_field" type="text" name="username">
                 <span class="error_text" th:text="${valid_username}"></span>
             </div>
-            <button type="button" id="username" class="id_check" onclick="idCheck()">중복확인</button>
+            <button type="button" id="username_btn" class="id_check" onclick="idCheck()">중복확인</button>
 
             <div class="pw_label">PW
             <input class="pw_field" type="password" name="password">
                 <span class="error_text" th:text="${valid_password}"></span>
             </div>
-            <!-- <div class="pwcheck_label">PW_CHECK</div>
-             <input class="pwcheck_field" type="password">
-            <div class="email_label">E-MAIL</div>
+            <div class="pwcheck_label">PW_CHECK
+            <input class="pwcheck_field" type="password" name="pwCheck">
+            </div>
+            <button type="button" id="password_btn" class="pw_check" onclick="passwordCheck()">비밀번호 확인</button>
+
+            <div class="email_label">E-MAIL
             <input class="email_field" type="text" name="email">
-            <div class="phone_label">phone</div>
-            <input class="phone_field" type="text" name="phone"> -->
+                <span class="error_text" th:text="${valid_email}"></span>
+            </div>
+            <div class="phone_label">phone
+            <input class="phone_field" type="text" name="phone">
+                <span class="error_text" th:text="${valid_phone}"></span>
+            </div>
             <button type="submit" class="signup_btn">
                 회원가입
             </button>
@@ -52,8 +59,6 @@
     function idCheck() {
         const username = document.querySelector('.id_field').value;
 
-
-
         $.ajax({
             url: `/idCheck/` + username,
             type: `GET`,
@@ -69,7 +74,22 @@
         });
     }
 
+    function passwordCheck() {
+
+        const password = document.querySelector('.pw_field').value;
+        const pwCheck = document.querySelector('.pwcheck_field').value;
+
+        if(password === pwCheck) {
+            alert("비밀번호가 서로 일치합니다!");
+        }
+        else {
+            alert("일치하지 않습니다. 확인해주세요...");
+        }
+
+    }
+
 </script>
+
 <script th:src="@{../js/signupjs.js}"></script>
 </body>
 </html>

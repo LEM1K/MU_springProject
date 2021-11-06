@@ -101,7 +101,7 @@
     cursor: pointer;
 }
 
-.login_btn:active {
+.login_btn:hover {
     background-color:skyblue;
     color:white;
 }
@@ -124,7 +124,7 @@
     cursor: pointer;
 }
 
-.kakao_btn:active {
+.kakao_btn:hover {
     transition: all 0.5s;
     background-color:slateblue;
     color:white;

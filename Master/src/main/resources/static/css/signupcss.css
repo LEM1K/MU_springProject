@@ -44,7 +44,6 @@
     display: flex;
     flex-direction: column;
     margin-top:30px;
-    margin-bottom: 20px;
 }
 
 .pwcheck_label{
@@ -93,7 +92,7 @@
     cursor: pointer;
 }
 
-.id_check:active{
+.id_check:hover{
     background-color:white;
     color:black;
 }
@@ -120,6 +119,27 @@
     margin-bottom:10px;
 }
 
+.pw_check{
+    transition: all 0.5s;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size:0.8rem;
+    color:white;
+    background-color:black;
+    width:160px;
+    height:20px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border:none;
+    border-radius:1ch;
+    cursor: pointer;
+}
+
+.pw_check:hover{
+    background-color:white;
+    color:black;
+}
+
 .email_field {
     font-family: 'Nanum Gothic Coding', monospace;
     width: 250px;
@@ -139,7 +159,7 @@
     flex-direction: row-reverse;
     background-color:white;
     font-size: 1.3rem;
-    margin-bottom:30px;
+    margin-bottom:10px;
 }
 
 .signup_btn {
@@ -157,12 +177,13 @@
     text-align: center;
     justify-content: center;
     margin-bottom: 20px;
+    margin-top: 35px;
     border:none;
     border-radius:1ch;
     cursor: pointer;
 }
 
-.signup_btn:active {
+.signup_btn:hover {
     background-color:white;
     color:black;
 }
@@ -185,7 +206,7 @@
     cursor: pointer;
 }
 
-.cancel_btn:active {
+.cancel_btn:hover {
     transition: all 0.5s;
     background-color:gray;
     color:white;

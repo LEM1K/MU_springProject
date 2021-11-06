@@ -28,6 +28,10 @@ public class Member {
 
     private String password;
 
+    private String email;
+
+    private String phone;
+
     private Boolean enable;
 
 
@@ -42,10 +46,12 @@ public class Member {
 
 
     @Builder
-    public Member(Long id, String username, String password, boolean enable) {
+    public Member(Long id, String username, String password, String email, String phone, boolean enable) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.phone = phone;
         this.enable = enable;
     }
 }

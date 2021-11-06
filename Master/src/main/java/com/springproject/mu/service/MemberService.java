@@ -33,6 +33,7 @@ public class MemberService {
         memberDto.setPassword(encodedPassword);
         memberDto.setEnable(true);
 
+
         Member member = memberDto.toEntity();
 
         Role role = new Role();
@@ -51,6 +52,17 @@ public class MemberService {
         else {
             return 1;
         }
+    }
+
+    //비밀 번호 재입력 검사
+    public int pwCheck(String password, String check) {
+
+        if(password.equals(check)) {
+            System.out.println("success");
+            return 1;
+        }
+
+        return 0;
     }
 
     //필드 유효성 검사
