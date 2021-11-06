@@ -1,0 +1,38 @@
+* {
+    font-family: 'Staatliches', cursive,'Nanum Gothic Coding', monospace;
+    
+}
+
+.title_txt{
+    transition:all 1.5s;
+    color:white;
+    font-size: 0rem;
+    padding:10px;
+    margin-bottom:20px;
+    border-bottom: 1px solid white;
+}
+
+.foot{
+    font-size: 1.2rem;
+    border-top:1px solid gray;
+    padding:20px;
+    text-align:right;
+}
+.insta_img {
+    transition: all 0.5s;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+.github_img{
+    transition: all 0.5s;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+.insta_img:hover{
+    filter:opacity(40%)
+}
+.github_img:hover{
+    filter:opacity(40%)
+}
