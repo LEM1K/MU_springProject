@@ -1,0 +1,318 @@
+* {
+    font-family: 'Staatliches', cursive,'Nanum Gothic Coding', monospace;
+    background-color:floralwhite;
+}
+
+.anchor {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 30px;
+}
+
+.member_info {
+    font-family: 'Nanum Gothic Coding', monospace;
+    color: darkblue;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.member_info:hover {
+    color: greenyellow;
+}
+
+.logout {
+    font-family: 'Nanum Gothic Coding', monospace;
+    color: darkblue;
+    margin-left:30px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logout:hover {
+    color: greenyellow;
+}
+
+.title_txt{
+    transition:all 1.5s;
+    color:white;
+    font-size: 0rem;
+    padding:10px;
+    margin-bottom:20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.navi {
+    transition: all 1s;
+    background-color: darkblue;
+}
+
+.navi_list {
+    transition: all 1s;
+    display: flex;
+    flex-direction: column;
+    list-style:none;
+    width: 100px;
+    height: 350px;
+    background-color: darkblue;
+}
+
+li {
+    margin-top:35px;
+    background-color: darkblue;
+}
+
+.home {
+    transition:all 1s;
+    background-color: darkblue;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size: 0.6rem;
+    text-decoration: none;
+    cursor: pointer;
+    color:white;
+}
+
+.home:hover {
+    color:greenyellow;
+}
+
+.general {
+    transition:all 1s;
+    background-color: darkblue;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size: 0.6rem;
+    text-decoration: none;
+    cursor: pointer;
+    color:white;
+}
+
+.general:hover {
+    color:greenyellow;
+}
+
+.column {
+    transition:all 1s;
+    background-color: darkblue;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size: 0.6rem;
+    text-decoration: none;
+    cursor: pointer;
+    color:white;
+}
+
+.column:hover {
+    color:greenyellow;
+}
+
+.composite {
+    transition:all 1s;
+    background-color: darkblue;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size: 0.6rem;
+    text-decoration: none;
+    cursor: pointer;
+    color:white;
+}
+
+.composite:hover {
+    color:greenyellow;
+}
+
+.chat {
+    transition:all 0.8s;
+    background-color: darkblue;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size: 0.6rem;
+    text-decoration: none;
+    cursor: pointer;
+    color:white;
+}
+
+.chat:hover {
+    color:greenyellow;
+}
+
+.main_content {
+    margin-right: 100px;
+    width:1300px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.home_txt {
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-left: 18px;
+    margin-top: 60px;
+    margin-bottom: 35px;
+}
+
+.list_table {
+    table-layout: fixed;
+    transition:all 0.7s;
+    width:50%;
+    margin-left: 50px;
+    margin-right: 50px;
+
+}
+
+th {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom:2px solid black;
+    height: 40px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+td {
+    font-family: 'Nanum Gothic Coding', monospace;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    height: 25px;
+    font-size: 0.9rem;
+}
+
+.category {
+
+    font-family: 'Nanum Gothic Coding', monospace;
+    width:13%;
+}
+
+.number {
+
+    font-family: 'Nanum Gothic Coding', monospace;
+    width:5%;
+}
+
+.title {
+    font-family: 'Nanum Gothic Coding', monospace;
+    width:60%;
+}
+
+.writer {
+    font-family: 'Nanum Gothic Coding', monospace;
+    width:22%;
+}
+
+
+.foot{
+    font-size: 1.2rem;
+    border-top:1px solid gray;
+    padding:20px;
+    text-align:right;
+}
+.insta_img {
+    transition: all 0.5s;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+.github_img{
+    transition: all 0.5s;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+.insta_img:hover{
+    filter:opacity(40%)
+}
+.github_img:hover{
+    filter:opacity(40%)
+}
+
+@media (max-width:1200px) {
+    nav {
+        width: 240px;
+    }
+}
+
+@media (max-width:1078px) {
+    th, td {
+        transition: all 0.5s;
+        font-size: 0.9rem;
+    }
+    nav {
+        transition: all 0.5s;
+        width: 230px;
+    }
+}
+
+@media (max-width:930px) {
+
+    nav {
+        transition: all 0.5s;
+        width: 215px;
+    }
+}
+
+@media (max-width:840px) {
+
+    nav {
+        transition: all 0.5s;
+        width: 190px;
+    }
+}
+
+@media (max-width:768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width:100%;
+        height: 180px;
+    }
+    ul{
+        padding:0px;
+    }
+    li {
+        margin-top:9px;
+        text-align: center;
+    }
+    .home {
+        font-size: 0.6rem;
+    }
+
+}
+@media (max-width:768px) {
+    .main_content{
+        width: 100%;
+        height: 500px;
+    }
+    .home_txt {
+        margin-top:20px;
+        font-size: 1.2rem;
+    }
+
+    .list_table {
+        width: 80%;
+        margin:0px;
+    }
+    th {
+        font-size: 0.9rem;
+    }
+
+    td {
+        font-size: 0.8rem;
+    }
+}
+

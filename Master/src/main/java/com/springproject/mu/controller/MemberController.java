@@ -51,5 +51,10 @@ public class MemberController {
 
     }
 
+    @GetMapping("/member/info")
+    public String memberInfo() {
+       return "/member/info";
+    }
+
 
 }

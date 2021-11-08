@@ -7,6 +7,32 @@
 
 
 <body>
+<header th:fragment="header">
+    <h2 class="title_txt">MU</h2>
+    <div class="anchor">
+        <a class="logout" th:href="@{/member/logout}">로그 아웃</a>
+        <a class="member_info" th:href="@{/member/info}">내 정보</a>
+    </div>
+</header>
+<nav class="navi" th:fragment="nav">
+    <ul class="navi_list">
+        <li>
+            <a class="home" th:href="@{/board/home}">홈</a>
+        </li>
+        <li>
+            <a class="general" th:href="@{/board/general}">자유 게시판</a>
+        </li>
+        <li>
+            <a class="column" th:href="@{/board/column}">칼럼 게시판</a>
+        </li>
+        <li>
+            <a class="composite" th:href="@{/board/composite}">자작곡 게시판</a>
+        </li>
+        <li>
+            <a class="chat" th:href="@{/board/chat}">토론/채팅</a>
+        </li>
+    </ul>
+</nav>
 
 <footer class="foot" th:fragment="footer">
     Made by LEM1K

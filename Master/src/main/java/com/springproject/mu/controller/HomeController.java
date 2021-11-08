@@ -1,11 +1,9 @@
 package com.springproject.mu.controller;
 
-import com.springproject.mu.model.Member;
 import com.springproject.mu.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -28,9 +26,24 @@ public class HomeController {
         return "member/signup";
     }
 
-    @GetMapping("/main")
+    @GetMapping("/board/home")
     public String printMainPage() {
-        return "main";
+        return "board/home";
+    }
+
+    @GetMapping("/board/general")
+    public String printGeneralPage() {
+        return "/board/general";
+    }
+
+    @GetMapping("/board/column")
+    public String printColumnPage() {
+        return "/board/column";
+    }
+
+    @GetMapping("/board/composite")
+    public String printCompositePage() {
+        return "/board/composite";
     }
 
 
