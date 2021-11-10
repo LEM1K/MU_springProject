@@ -1,0 +1,134 @@
+* {
+    font-family: 'Staatliches', cursive, 'Nanum Gothic Coding', monospace;
+    background-color:floralwhite;
+}
+
+.form_title {
+    font-family: 'Nanum Gothic Coding', monospace;
+    margin-top: 30px;
+    margin-left: 15px;
+    font-size: 1.8rem;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+}
+
+.title_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.title_txt {
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 1.2rem;
+    margin-left: 18px;
+    margin-top: 80px;
+}
+
+.title_area {
+    margin-bottom: 50px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 1.4rem;
+    border: 2.5px solid;
+    background-color: white;
+    width: 80%;
+    height: 30px;
+    margin-left: 18px;
+    margin-right: 100px;
+}
+
+.content_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.content_txt {
+    margin-left: 18px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 1.2rem;
+}
+
+.content_area {
+    margin-bottom: 50px;
+    width: 80%;
+    height: 350px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    border: solid 2px;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 1.2rem;
+    margin-left: 18px;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom:20px;
+    justify-content: center;
+
+}
+
+.submit_btn {
+    transition: all 0.7s;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    width: 120px;
+    height: 30px;
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit_btn:hover {
+    color: black;
+    background-color: white;
+}
+
+.cancel_btn {
+    transition: all 0.8s;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 20px;
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1.1px solid;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cancel_btn:hover {
+    border:none;
+    color: red;
+}
+
+.foot{
+    font-size: 1.2rem;
+    border-top:1px solid gray;
+    padding:20px;
+    text-align:right;
+}
+.insta_img {
+    transition: all 0.5s;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+.github_img{
+    transition: all 0.5s;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+}
+.insta_img:hover{
+    filter:opacity(40%)
+}
+.github_img:hover{
+    filter:opacity(40%)
+}

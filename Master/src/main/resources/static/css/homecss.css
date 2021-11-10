@@ -110,20 +110,6 @@ li {
     color:greenyellow;
 }
 
-.composite {
-    transition:all 1s;
-    background-color: darkblue;
-    font-family: 'Nanum Gothic Coding', monospace;
-    font-weight: bold;
-    font-size: 0.6rem;
-    text-decoration: none;
-    cursor: pointer;
-    color:white;
-}
-
-.composite:hover {
-    color:greenyellow;
-}
 
 .chat {
     transition:all 0.8s;
@@ -279,7 +265,7 @@ td {
         flex-direction: column;
         align-items: center;
         width:100%;
-        height: 180px;
+        height: 150px;
     }
     ul{
         padding:0px;

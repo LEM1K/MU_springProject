@@ -1,15 +1,11 @@
 package com.springproject.mu.controller;
 
-import com.springproject.mu.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
 
-    @Autowired
-    private MemberService memberService;
 
     @GetMapping("/")
     public String index() {
@@ -41,10 +37,6 @@ public class HomeController {
         return "/board/column";
     }
 
-    @GetMapping("/board/composite")
-    public String printCompositePage() {
-        return "/board/composite";
-    }
 
 
 }
