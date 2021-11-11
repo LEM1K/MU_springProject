@@ -27,14 +27,6 @@ public class MemberController {
 
         model.addAttribute("memberDto", memberDto);
 
-
-        System.out.println(memberDto.getUsername());
-        System.out.println(memberDto.getPassword());
-        System.out.println(memberDto.getPwCheck());
-        System.out.println(memberDto.getEmail());
-        System.out.println(memberDto.getPhone());
-
-
         int idCheck = memberAPIController.idCheck(memberDto.getUsername());
         int pwCheck = memberService.pwCheck(memberDto.getPassword(), memberDto.getPwCheck());
         if(errors.hasErrors() || idCheck == 0 || pwCheck == 0) {

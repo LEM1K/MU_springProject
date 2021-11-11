@@ -26,10 +26,7 @@ public class GeneralBoard {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    //@Column(nullable = false, length = 20)
-    private String writer;
-
-    //@Column(nullable = false, length = 8)
+    @Column(nullable = false, length = 8)
     private String category;
 
     @CreatedDate
@@ -38,16 +35,21 @@ public class GeneralBoard {
     @LastModifiedDate
     private LocalDateTime modifiedTime;
 
+    @ManyToOne
+    @JoinColumn(name = "username")
+    private Member member;
+
+
     @Builder
-    public GeneralBoard(Long id, String title, String content, String writer, String category,
-                        LocalDateTime createTime, LocalDateTime modifiedTime) {
+    public GeneralBoard(Long id, String title, String content, String category,
+                        LocalDateTime createTime, LocalDateTime modifiedTime, Member member) {
 
         this.id = id;
         this.title = title;
         this.content = content;
-        this.writer = writer;
         this.category = category;
         this.createTime = createTime;
         this.modifiedTime = modifiedTime;
+        this.member = member;
     }
 }

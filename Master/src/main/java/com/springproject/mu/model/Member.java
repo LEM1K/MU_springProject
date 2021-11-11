@@ -50,6 +50,10 @@ public class Member {
     private List<Role> roles = new ArrayList<>();
 
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<GeneralBoard> generalBoards;
+
+
     @Builder
     public Member(Long id, String username, String password, String email, String phone, boolean enable) {
         this.id = id;

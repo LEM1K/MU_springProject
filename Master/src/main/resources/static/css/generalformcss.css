@@ -15,6 +15,13 @@
     flex-direction: column;
 }
 
+.error_text {
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 1rem;
+    margin-left: 18px;
+    margin-bottom: 15px;
+}
+
 .title_form {
     display: flex;
     flex-direction: column;

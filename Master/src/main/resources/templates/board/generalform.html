@@ -13,14 +13,16 @@
 <body>
     <h2 class="form_title">게시글 작성</h2>
 
-    <form th:action="@{/board/generalform}" method="POST">
+    <form th:action="@{/board/generalform}" method="POST" modelAttribute="generalBoardDto">
         <div class="forms">
             <div class="title_form">
                 <h4 class="title_txt">제목</h4>
+                <span class="error_text" th:text="${valid_title}"></span>
                 <input class="title_area" type="text" name="title">
             </div>
             <div class="content_form">
                 <h4 class="content_txt">내용</h4>
+                <span class="error_text" th:text="${valid_content}"></span>
                 <textarea class="content_area" name="content"></textarea>
             </div>
             <div class="btns">
