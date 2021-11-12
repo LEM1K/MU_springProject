@@ -143,11 +143,6 @@ li {
     width:1300px;
 }
 
-.list {
-    display: flex;
-    flex-direction: column;
-}
-
 .general_txt {
     font-family: 'Nanum Gothic Coding', monospace;
     font-weight: bold;
@@ -157,181 +152,85 @@ li {
     margin-bottom: 35px;
 }
 
-.list_table {
-    table-layout: fixed;
-    transition:all 0.7s;
-    width:50%;
-    margin-left: 50px;
-    margin-right: 50px;
+.post_header {
+    display: flex;
+    flex-direction: column;
 
 }
 
-th {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    border-bottom:2px solid black;
-    height: 40px;
-    text-align: center;
-    font-size: 1.1rem;
-}
 
-td, td>a {
-    font-family: 'Nanum Gothic Coding', monospace;
-    color: black;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: center;
-    height: 25px;
-    font-size: 0.9rem;
-}
-
-td>a:active {
-    color: black;
-}
-
-
-
-
-.number {
-    font-family: 'Nanum Gothic Coding', monospace;
-    width:5%;
+.post_title {
+    display: flex;
+    flex-direction: row;
+    margin-right: 100px;
+    margin-left: 30px;
 }
 
 .title {
-    font-family: 'Nanum Gothic Coding', monospace;
-    width:60%;
+    font-family:'Nanum Gothic Coding', monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.post_semi_header {
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+}
+
+.post_writer {
+    display: flex;
+    flex-direction: row;
+    margin-right: 100px;
+}
+
+.post_writer_txt {
+    font-family:'Nanum Gothic Coding', monospace;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .writer {
-    font-family: 'Nanum Gothic Coding', monospace;
-    width:22%;
+    font-family:'Nanum Gothic Coding', monospace;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
-.created {
-    font-family: 'Nanum Gothic Coding', monospace;
-    width:13%;
-}
-
-
-.paging {
+.post_modified {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
 }
 
-.prev_page {
-    display: inline-block;
-    font-family: 'Nanum Gothic Coding', monospace;
-    background-color: white;
-    color: black;
-    text-align: center;
-    width:25px;
-    height: 20px;
-    border:1px solid;
-}
-.prev_page_anchor {
-    text-decoration: none;
-}
-
-.prev_page_anchor:active {
-    color: black;
-}
-
-.page_num {
-    display: inline-block;
-    font-family: 'Nanum Gothic Coding', monospace;
-    font-weight: bold;
+.post_modified_txt {
+    font-family:'Nanum Gothic Coding', monospace;
     font-size: 1rem;
-    background-color: white;
-    text-align: center;
-    width:30px;
-    height: 20px;
-    border:1px solid;
-}
-.page_num_anchor {
-    text-decoration: none;
+    font-weight: bold;
 }
 
-.page_num_anchor:active {
-    color: black;
+.modified {
+    font-family:'Nanum Gothic Coding', monospace;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
-.next_page {
-    display: inline-block;
-    font-family: 'Nanum Gothic Coding', monospace;
-    background-color: white;
-    text-decoration: none;
-    text-align: center;
-    width: 25px;
-    height: 20px;
-    border:1px solid;
-}
-
-.next_page_anchor {
-    text-decoration: none;
-}
-
-.next_page_anchor:active {
-    color: black;
-}
-
-.disabled {
-    pointer-events: none;
-}
-
-
-
-.search_insert {
+.post_body {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top:60px;
-
+    margin-left: 30px;
+    margin-top: 100px;
 }
 
-.search_text {
-    width: 170px;
-    font-family: 'Nanum Gothic Coding', monospace;
-    height: 25px;
-    margin-right: 10px;
-}
-
-.search_btn {
-    width: 65px;
-    height: 29px;
-    font-family: 'Nanum Gothic Coding', monospace;
-    border: none;
-    background: darkblue;
-    color: white;
+.post_content_txt {
+    font-family:'Nanum Gothic Coding', monospace;
     font-weight: bold;
-    cursor:pointer;
-}
-.search_btn:active {
-    background-color: greenyellow;
+    font-size: 2rem;
 }
 
-.insert {
-    transition: all 0.7s;
-    margin-top:20px;
-    width:260px;
-    height: 30px;
-    font-family: 'Nanum Gothic Coding', monospace;
-    font-weight: bold;
-    font-size: 1.1rem;
-    background-color: darkblue;
-    color: white;
-    border:none;
-    border-radius: 40px;
-    cursor:pointer;
-}
+.content {
+    word-wrap: break-word;
+    font-family:'Nanum Gothic Coding', monospace;
+    font-size:1rem;
 
-.insert:hover {
-    background-color: white;
-    color: black;
 }
 
 .foot{
@@ -366,10 +265,7 @@ td>a:active {
 }
 
 @media (max-width:1078px) {
-    th, td {
-        transition: all 0.5s;
-        font-size: 0.9rem;
-    }
+
     nav {
         transition: all 0.5s;
         width: 230px;
@@ -413,7 +309,7 @@ td>a:active {
     }
 
 }
-@media (max-width:768px) {
+/*@media (max-width:768px) {
     .main_content{
         width: 100%;
         height: 500px;
@@ -423,19 +319,4 @@ td>a:active {
         font-size: 1.2rem;
     }
 
-    .list_table {
-        width: 80%;
-        margin:0px;
-    }
-    th {
-        font-size: 0.9rem;
-    }
-
-    td {
-        font-size: 0.8rem;
-    }
-
-    footer {
-        margin-top: 200px;
-    }
-}
+}*/

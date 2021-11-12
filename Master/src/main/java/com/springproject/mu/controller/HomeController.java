@@ -1,6 +1,7 @@
 package com.springproject.mu.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -25,11 +26,6 @@ public class HomeController {
     @GetMapping("/board/home")
     public String printMainPage() {
         return "board/home";
-    }
-
-    @GetMapping("/board/general")
-    public String printGeneralPage() {
-        return "/board/general";
     }
 
     @GetMapping("/board/column")

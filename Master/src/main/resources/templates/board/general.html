@@ -31,19 +31,32 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>00</td>
-          <td>Sample title Sample title Sample title</td>
-          <td>Sample writer</td>
-          <td>2020-11-08 11:20</td>
+        <tr th:each="generalboards : ${generalboards}">
+          <td th:text="${generalboards.id}">00</td>
+          <td><a th:text="${generalboards.title}" th:href="@{/board/generaldetail(id=${generalboards.id})}"></a></td>
+          <td th:text="${generalboards.member.username}">Sample writer</td>
+          <td th:text="${#temporals.format(generalboards.modifiedTime, 'yyyy-MM-dd HH:mm')}">2020-11-08 11:20</td>
         </tr>
 
         </tbody>
       </table>
     </div>
+    <div class="paging_div">
+      <ul class="paging">
+        <li class="prev_page" th:classappend="${1 == generalboards.pageable.pageNumber + 1} ? 'disabled'">
+          <a class="prev_page_anchor" th:href="@{/board/general(page=${generalboards.pageable.pageNumber - 1}, searchText=${param.searchText})}"><<</a>
+        </li>
+        <li class="page_num" th:each="i : ${#numbers.sequence(startpage, endpage)}">
+          <a class="page_num_anchor" th:href="@{/board/general(page=${i - 1}, searchText=${param.searchText})}" th:text="${i}">1</a>
+        </li>
+        <li class="next_page" th:classappend="${generalboards.totalPages == generalboards.pageable.pageNumber + 1} ? 'disabled'">
+          <a class="next_page_anchor" th:href="@{/board/general(page=${generalboards.pageable.pageNumber + 1}, searchText=${param.searchText})}" >>></a>
+        </li>
+      </ul>
+    </div>
     <div class="search_insert">
-      <form>
-        <input class="search_text" type="text">
+      <form th:action="@{/board/general}" method="get">
+        <input class="search_text" name="searchText" type="text" th:value="${param.searchText}">
         <button class="search_btn" type="submit">검색</button>
       </form>
       <button class="insert" type="button" th:onclick="@{location.href='/board/generalform'}">작성</button>
