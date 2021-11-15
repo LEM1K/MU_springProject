@@ -30,7 +30,7 @@ public class HomeController {
 
     @GetMapping("/board/column")
     public String printColumnPage() {
-        return "/board/column";
+        return "board/column";
     }
 
 

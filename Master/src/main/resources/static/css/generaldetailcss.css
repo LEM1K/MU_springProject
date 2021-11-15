@@ -140,7 +140,7 @@ li {
 
 .main_content {
     margin-right: 100px;
-    width:1300px;
+    width:80%;
 }
 
 .general_txt {
@@ -150,6 +150,10 @@ li {
     margin-left: 18px;
     margin-top: 60px;
     margin-bottom: 35px;
+}
+
+.semi_content {
+    width: 95%;
 }
 
 .post_header {
@@ -168,8 +172,9 @@ li {
 
 .title {
     font-family:'Nanum Gothic Coding', monospace;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
+    color: darkblue;
 }
 
 .post_semi_header {
@@ -181,7 +186,7 @@ li {
 .post_writer {
     display: flex;
     flex-direction: row;
-    margin-right: 100px;
+    margin-right: 50px;
 }
 
 .post_writer_txt {
@@ -214,23 +219,66 @@ li {
 }
 
 .post_body {
+    width: 90%;
     display: flex;
     flex-direction: column;
     margin-left: 30px;
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
 .post_content_txt {
     font-family:'Nanum Gothic Coding', monospace;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .content {
     word-wrap: break-word;
     font-family:'Nanum Gothic Coding', monospace;
-    font-size:1rem;
+    font-weight: bold;
+    font-size:1.1rem;
+}
 
+.edit_btns {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 70px;
+
+}
+.update_btn {
+    transition:all 0.8s;
+    width:80px;
+    height:30px;
+    border:none;
+    border-radius: 5px;
+    background-color: darkblue;
+    color: white;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size:1.1rem;
+}
+
+.update_btn:hover {
+    background-color: lightskyblue;
+    color: black;
+}
+
+.delete_btn {
+    transition:all 0.8s;
+    margin-left: 25px;
+    width:80px;
+    height:30px;
+    border:1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size:1.1rem;
+}
+
+.delete_btn:hover {
+    background-color: black;
+    color: white;
 }
 
 .foot{
@@ -261,6 +309,10 @@ li {
 @media (max-width:1200px) {
     nav {
         width: 240px;
+    }
+    .main_content {
+        margin-right: 100px;
+        width:75%;
     }
 }
 
@@ -309,14 +361,71 @@ li {
     }
 
 }
-/*@media (max-width:768px) {
+@media (max-width:768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
     .main_content{
         width: 100%;
-        height: 500px;
+        height: auto;
     }
-    .home_txt {
+    .general_txt {
+        order:0;
         margin-top:20px;
         font-size: 1.2rem;
     }
 
-}*/
+    .post_title {
+        margin-left:5px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .post_semi_header {
+        margin-left:5px;
+    }
+
+    .post_writer {
+        margin-right: 30px;
+    }
+
+    .post_writer_txt {
+        font-size: 0.7rem;
+    }
+
+    .writer {
+        font-size: 0.7rem;
+    }
+
+    .post_modified_txt {
+        font-size: 0.7rem;
+    }
+
+    .modified {
+        font-size: 0.7rem;
+    }
+
+    .post_body{
+        margin-left: 5px;
+    }
+
+    .post_content_txt {
+        font-size: 1.4rem;
+    }
+
+    .content {
+        font-size: 0.9rem;
+    }
+
+    .foot {
+        margin-top: 80px;
+    }
+
+
+
+
+
+}

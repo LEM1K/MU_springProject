@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Staatliches&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{../css/generaldetailcss.css}"/>
+    <link rel="stylesheet" th:href="@{/css/generaldetailcss.css}"/>
     <title>MU General</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
             <div>
                 <h3 class="general_txt">자유 게시판</h3>
             </div>
-            <div>
+            <div class="semi_content">
                 <div class="post_header">
                     <div class="post_title">
                         <p class="title" th:text="${generalBoard.title}"></p>
@@ -33,7 +33,7 @@
                             <p class="writer" th:text="${generalBoard.member.username}"></p>
                         </div>
                         <div class="post_modified">
-                            <p class="post_modified_txt">수정 일&nbsp;:&nbsp; </p>
+                            <p class="post_modified_txt">수정일&nbsp;:&nbsp; </p>
                             <p class="modified" th:text="${#temporals.format(generalBoard.modifiedTime, 'yyyy-MM-dd HH:mm')}"></p>
                         </div>
                     </div>
@@ -44,11 +44,76 @@
                     <p class="content" th:text="${generalBoard.content}"></p>
                 </div>
             </div>
+            <div class="edit_btns">
+                <button class="delete_btn" type="button" onclick="onDelete()">삭제</button>
+                <button class="update_btn" type="button" onclick="onUpdate()">수정</button>
+            </div>
         </main>
     </div>
 
     <footer class="foot" th:replace="fragments/common :: footer">
 
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:inline="javascript">
+        function onDelete() {
+            /*<![CDATA[*/
+            let postId = /*[[ ${generalBoard.id} ]]*/;
+            /*]]*/
+
+            /*<![CDATA[*/
+            let postwriter = /*[[ ${generalBoard.member.username} ]]*/;
+            /*]]*/
+            $.ajax({
+                type:"delete",
+                dataType:"text",
+                data:{"postId" : postId, "postwriter" : postwriter},
+                url: "/board/generaldelete",
+                success : function(count) {
+                    const resultCount = count;
+                    console.log(resultCount);
+
+                    if($.trim(resultCount) == 1) {
+                       alert("삭제가 완료되었습니다.")
+                    }
+                    else {
+                        alert("다른 회원의 글은 삭제할 수 없습니다.")
+                    }
+                    window.location.href='/board/general';
+                }
+            });
+        }
+
+        function onUpdate() {
+            /*<![CDATA[*/
+            let postId = /*[[ ${generalBoard.id} ]]*/;
+            /*]]*/
+
+            /*<![CDATA[*/
+            let postwriter = /*[[ ${generalBoard.member.username} ]]*/;
+            /*]]*/
+
+            $.ajax({
+                type:"get",
+                dataType:"text",
+                data:{"postId" : postId, "postwriter" : postwriter},
+                url: "/board/generalupdate",
+                success : function(count) {
+                    const resultCount = count;
+
+                    if($.trim(resultCount) == 1) {
+                        window.location.href='/board/generaluform?id=' + postId;
+                    }
+                    else {
+                        alert("다른 회원의 글은 수정할 수 없습니다.")
+                        window.location.href='/board/general';
+                    }
+
+                }
+            });
+        }
+
+
+    </script>
 </body>
 </html>

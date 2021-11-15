@@ -35,7 +35,7 @@ public class MemberController {
             for (String key : validatorResult.keySet()) {
                 model.addAttribute(key, validatorResult.get(key));
             }
-            return "/member/signup";
+            return "member/signup";
         }
 
         memberService.saveMember(memberDto);
@@ -45,7 +45,7 @@ public class MemberController {
 
     @GetMapping("/member/info")
     public String memberInfo() {
-       return "/member/info";
+       return "member/info";
     }
 
 

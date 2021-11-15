@@ -24,9 +24,8 @@ public class GeneralBoardDto {
     private String title;
 
     @NotBlank(message = "내용을 채워 주세요.")
+    @Size(max = 1000, message = "1000 자 이내로 입력 해주세요")
     private String content;
-
-    private String writer;
 
     private String category;
 

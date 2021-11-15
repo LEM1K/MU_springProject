@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible">
@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Staatliches&display=swap" rel="stylesheet">
-  <link rel="stylesheet" th:href="@{../css/generalcss.css}"/>
+  <link rel="stylesheet" th:href="@{/css/generalcss.css}"/>
   <title>MU General</title>
 </head>
 <body>
@@ -31,11 +31,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="generalboards : ${generalboards}">
-          <td th:text="${generalboards.id}">00</td>
-          <td><a th:text="${generalboards.title}" th:href="@{/board/generaldetail(id=${generalboards.id})}"></a></td>
-          <td th:text="${generalboards.member.username}">Sample writer</td>
-          <td th:text="${#temporals.format(generalboards.modifiedTime, 'yyyy-MM-dd HH:mm')}">2020-11-08 11:20</td>
+        <tr th:each="generalBoards : ${generalBoards}">
+          <td th:text="${generalBoards.id}">00</td>
+          <td><a th:text="${generalBoards.title}" th:href="@{/board/generaldetail(id=${generalBoards.id})}"></a></td>
+          <td th:text="${generalBoards.member.username}">Sample writer</td>
+          <td th:text="${#temporals.format(generalBoards.modifiedTime, 'yyyy-MM-dd HH:mm')}">2020-11-08 11:20</td>
         </tr>
 
         </tbody>
@@ -43,14 +43,14 @@
     </div>
     <div class="paging_div">
       <ul class="paging">
-        <li class="prev_page" th:classappend="${1 == generalboards.pageable.pageNumber + 1} ? 'disabled'">
-          <a class="prev_page_anchor" th:href="@{/board/general(page=${generalboards.pageable.pageNumber - 1}, searchText=${param.searchText})}"><<</a>
+        <li class="prev_page" th:classappend="${1 == generalBoards.pageable.pageNumber + 1} ? 'disabled'">
+          <a class="prev_page_anchor" th:href="@{/board/general(page=${generalBoards.pageable.pageNumber - 1}, searchText=${param.searchText})}"><<</a>
         </li>
         <li class="page_num" th:each="i : ${#numbers.sequence(startpage, endpage)}">
           <a class="page_num_anchor" th:href="@{/board/general(page=${i - 1}, searchText=${param.searchText})}" th:text="${i}">1</a>
         </li>
-        <li class="next_page" th:classappend="${generalboards.totalPages == generalboards.pageable.pageNumber + 1} ? 'disabled'">
-          <a class="next_page_anchor" th:href="@{/board/general(page=${generalboards.pageable.pageNumber + 1}, searchText=${param.searchText})}" >>></a>
+        <li class="next_page" th:classappend="${generalBoards.totalPages == generalBoards.pageable.pageNumber + 1} ? 'disabled'">
+          <a class="next_page_anchor" th:href="@{/board/general(page=${generalBoards.pageable.pageNumber + 1}, searchText=${param.searchText})}" >>></a>
         </li>
       </ul>
     </div>
@@ -67,7 +67,7 @@
 <footer class="foot" th:replace="fragments/common :: footer">
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script th:src="@{../js/generaljs.js}"></script>
+<script th:src="@{/js/generaljs.js}"></script>
 
 </body>
 </html>

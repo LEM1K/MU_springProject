@@ -42,6 +42,32 @@ public class GeneralBoardService {
 
     }
 
+    public void updatePost(GeneralBoardDto generalBoardDto, String username) {
+        Optional<GeneralBoard> generalBoardOptional = generalBoardRepos.findById(generalBoardDto.getId());
+
+        LocalDateTime createTime = generalBoardOptional.get().getCreateTime();
+        Optional<Member> member = memberRepos.findByUsername(username);
+
+        GeneralBoard generalBoard = generalBoardDto.toEntity();
+
+        generalBoard.setMember(member.get());
+        generalBoard.setCreateTime(createTime);
+        generalBoard.setModifiedTime(LocalDateTime.now());
+        generalBoard.setCategory("general");
+
+        generalBoardRepos.save(generalBoard);
+    }
+
+
+    public int writerCheck(String username, String writer) {
+        if(username.equals(writer)) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+
     //필드 유효성 검사
     public Map<String, String> validateHandling(Errors errors) {
         Map<String, String> validatorResult = new HashMap<>();
@@ -53,6 +79,7 @@ public class GeneralBoardService {
 
         return validatorResult;
     }
+
 
 
 }
