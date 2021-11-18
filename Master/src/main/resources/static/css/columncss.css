@@ -108,6 +108,21 @@ li {
     color:greenyellow;
 }
 
+.composite {
+    transition:all 1s;
+    background-color: darkblue;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    cursor: pointer;
+    color:white;
+}
+
+.composite:hover {
+    color:greenyellow;
+}
+
 .chat {
     transition:all 0.8s;
     background-color: darkblue;
@@ -125,10 +140,15 @@ li {
 
 .main_content {
     margin-right: 100px;
-    width:80%;
+    width:1300px;
 }
 
-.general_txt {
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.column_txt {
     font-family: 'Nanum Gothic Coding', monospace;
     font-weight: bold;
     font-size: 1.5rem;
@@ -137,133 +157,181 @@ li {
     margin-bottom: 35px;
 }
 
-.semi_content {
-    width: 95%;
-}
-
-.post_header {
-    display: flex;
-    flex-direction: column;
-
-}
-
-
-.post_title {
-    display: flex;
-    flex-direction: row;
-    margin-right: 100px;
-    margin-left: 30px;
-}
-
-.title {
-    font-family:'Nanum Gothic Coding', monospace;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: darkblue;
-}
-
-.post_semi_header {
-    display: flex;
-    flex-direction: row;
-    margin-left: 30px;
-}
-
-.post_writer {
-    display: flex;
-    flex-direction: row;
+.list_table {
+    table-layout: fixed;
+    transition:all 0.7s;
+    width:50%;
+    margin-left: 50px;
     margin-right: 50px;
-}
-
-.post_writer_txt {
-    font-family:'Nanum Gothic Coding', monospace;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.writer {
-    font-family:'Nanum Gothic Coding', monospace;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.post_modified {
-    display: flex;
-    flex-direction: row;
-}
-
-.post_modified_txt {
-    font-family:'Nanum Gothic Coding', monospace;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.modified {
-    font-family:'Nanum Gothic Coding', monospace;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.post_body {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    margin-left: 30px;
-    margin-top: 60px;
-}
-
-.post_content_txt {
-    font-family:'Nanum Gothic Coding', monospace;
-    font-weight: bold;
-    font-size: 1.8rem;
-}
-
-.content {
-    word-wrap: break-word;
-    font-family:'Nanum Gothic Coding', monospace;
-    font-weight: bold;
-    font-size:1.1rem;
-}
-
-.edit_btns {
-    display: flex;
-    flex-direction: row-reverse;
-    margin-top: 70px;
 
 }
-.update_btn {
-    transition:all 0.8s;
-    width:80px;
-    height:30px;
-    border:none;
-    border-radius: 5px;
-    background-color: darkblue;
-    color: white;
+
+th {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom:2px solid black;
+    height: 40px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+td, td>a {
     font-family: 'Nanum Gothic Coding', monospace;
-    font-weight: bold;
-    font-size:1.1rem;
+    color: black;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    height: 25px;
+    font-size: 0.9rem;
 }
 
-.update_btn:hover {
-    background-color: lightskyblue;
+td>a:active {
     color: black;
 }
 
-.delete_btn {
-    transition:all 0.8s;
-    margin-left: 25px;
-    width:80px;
-    height:30px;
-    border:1px solid black;
-    border-radius: 5px;
-    background-color: white;
+
+
+
+.number {
     font-family: 'Nanum Gothic Coding', monospace;
-    font-weight: bold;
-    font-size:1.1rem;
+    width:5%;
 }
 
-.delete_btn:hover {
-    background-color: black;
+.title {
+    font-family: 'Nanum Gothic Coding', monospace;
+    width:60%;
+}
+
+.writer {
+    font-family: 'Nanum Gothic Coding', monospace;
+    width:22%;
+}
+
+.created {
+    font-family: 'Nanum Gothic Coding', monospace;
+    width:13%;
+}
+
+
+.paging {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.prev_page {
+    display: inline-block;
+    font-family: 'Nanum Gothic Coding', monospace;
+    background-color: white;
+    color: black;
+    text-align: center;
+    width:25px;
+    height: 20px;
+    border:1px solid;
+}
+.prev_page_anchor {
+    text-decoration: none;
+}
+
+.prev_page_anchor:active {
+    color: black;
+}
+
+.page_num {
+    display: inline-block;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: white;
+    text-align: center;
+    width:30px;
+    height: 20px;
+    border:1px solid;
+}
+.page_num_anchor {
+    text-decoration: none;
+}
+
+.page_num_anchor:active {
+    color: black;
+}
+
+.next_page {
+    display: inline-block;
+    font-family: 'Nanum Gothic Coding', monospace;
+    background-color: white;
+    text-decoration: none;
+    text-align: center;
+    width: 25px;
+    height: 20px;
+    border:1px solid;
+}
+
+.next_page_anchor {
+    text-decoration: none;
+}
+
+.next_page_anchor:active {
+    color: black;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+
+
+.search_insert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:60px;
+
+}
+
+.search_text {
+    width: 170px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.search_btn {
+    width: 65px;
+    height: 29px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    border: none;
+    background: darkblue;
     color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+.search_btn:active {
+    background-color: greenyellow;
+}
+
+.insert {
+    transition: all 0.7s;
+    margin-top:20px;
+    width:260px;
+    height: 30px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size: 1.1rem;
+    background-color: darkblue;
+    color: white;
+    border:none;
+    border-radius: 40px;
+    cursor:pointer;
+}
+
+.insert:hover {
+    background-color: white;
+    color: black;
 }
 
 .foot{
@@ -295,14 +363,13 @@ li {
     nav {
         width: 240px;
     }
-    .main_content {
-        margin-right: 100px;
-        width:75%;
-    }
 }
 
 @media (max-width:1078px) {
-
+    th, td {
+        transition: all 0.5s;
+        font-size: 0.9rem;
+    }
     nav {
         transition: all 0.5s;
         width: 230px;
@@ -347,65 +414,30 @@ li {
 
 }
 @media (max-width:768px) {
-    body {
-        display: flex;
-        flex-direction: column;
-    }
-    .main_content{
+    .main_content {
         width: 100%;
-        height: auto;
+        height: 500px;
     }
+
     .general_txt {
-        order:0;
-        margin-top:20px;
+        margin-top: 20px;
         font-size: 1.2rem;
     }
 
-    .post_title {
-        margin-left:5px;
+    .list_table {
+        width: 80%;
+        margin: 0px;
     }
 
-    .title {
-        font-size: 1.5rem;
-    }
-
-    .post_semi_header {
-        margin-left:5px;
-    }
-
-    .post_writer {
-        margin-right: 30px;
-    }
-
-    .post_writer_txt {
-        font-size: 0.7rem;
-    }
-
-    .writer {
-        font-size: 0.7rem;
-    }
-
-    .post_modified_txt {
-        font-size: 0.7rem;
-    }
-
-    .modified {
-        font-size: 0.7rem;
-    }
-
-    .post_body{
-        margin-left: 5px;
-    }
-
-    .post_content_txt {
-        font-size: 1.4rem;
-    }
-
-    .content {
+    th {
         font-size: 0.9rem;
     }
 
-    .foot {
-        margin-top: 80px;
+    td {
+        font-size: 0.8rem;
+    }
+
+    footer {
+        margin-top: 200px;
     }
 }

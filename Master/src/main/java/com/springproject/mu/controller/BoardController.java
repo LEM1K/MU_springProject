@@ -1,9 +1,13 @@
 package com.springproject.mu.controller;
 
+import com.springproject.mu.dto.ColumnBoardDto;
 import com.springproject.mu.dto.GeneralBoardDto;
 import com.springproject.mu.dto.MemberDto;
+import com.springproject.mu.model.ColumnBoard;
 import com.springproject.mu.model.GeneralBoard;
+import com.springproject.mu.repos.ColumnBoardRepos;
 import com.springproject.mu.repos.GeneralBoardRepos;
+import com.springproject.mu.service.ColumnBoardService;
 import com.springproject.mu.service.GeneralBoardService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +32,10 @@ public class BoardController {
     GeneralBoardService generalBoardService;
 
     GeneralBoardRepos generalBoardRepos;
+
+    ColumnBoardService columnBoardService;
+
+    ColumnBoardRepos columnBoardRepos;
 
     @GetMapping("/board/general")
     public String printGeneralPage(Model model, @PageableDefault(size = 10) Pageable pageable, @RequestParam(required = false, defaultValue = "") String searchText) {
@@ -116,6 +124,92 @@ public class BoardController {
         return "redirect:/board/general";
     }
 
+
+    @GetMapping("/board/column")
+    public String printColumnPage(Model model, @PageableDefault(size = 10) Pageable pageable, @RequestParam(required = false, defaultValue = "") String searchText) {
+
+        //Page<GeneralBoard> generalBoards = generalBoardRepos.findAll(pageable);
+        Page<ColumnBoard> columnBoards = columnBoardRepos.findByTitleContaining(searchText, pageable);
+        int startpage = Math.max(1, columnBoards.getPageable().getPageNumber() - 4);
+        int endpage = Math.min(columnBoards.getTotalPages(), columnBoards.getPageable().getPageNumber() + 4);
+
+        model.addAttribute("startpage", startpage);
+        model.addAttribute("endpage", endpage);
+
+        model.addAttribute("columnBoards", columnBoards);
+        return "board/column";
+    }
+
+    @GetMapping("/board/columndetail")
+    public String columnPostDetail(@RequestParam Long id, Model model) {
+
+        Optional<ColumnBoard> columnBoards = columnBoardRepos.findById(id);
+
+        model.addAttribute("columnBoard", columnBoards.get());
+
+        return "board/columndetail";
+    }
+
+    @GetMapping("/board/columnform")
+    public String columnFormPrint() {
+        return "board/columnform";
+    }
+
+
+    @PostMapping("/board/columnform")
+    public String columnFormInsert(@Valid ColumnBoardDto columnBoardDto, Errors errors, Model model, Authentication authentication) {
+
+        String username = authentication.getName();
+        model.addAttribute("columnBoardDto", columnBoardDto);
+
+        if(errors.hasErrors()) {
+
+            Map<String, String> validatorResult = columnBoardService.validateHandling(errors);
+            for (String key : validatorResult.keySet()) {
+                model.addAttribute(key, validatorResult.get(key));
+            }
+            return "board/columnform";
+        }
+
+
+        columnBoardService.insertPost(columnBoardDto, username);
+
+        return "redirect:/board/column";
+    }
+
+    @GetMapping("/board/columnuform")
+    public String columnUpdateFormPrint(@RequestParam String id, Model model) {
+
+        Optional<ColumnBoard> columnBoard = columnBoardRepos.findById(Long.parseLong(id));
+        ColumnBoardDto columnBoardDto = new ColumnBoardDto(columnBoard.get().getId(),
+                columnBoard.get().getTitle(), columnBoard.get().getContent(),
+                columnBoard.get().getCategory(), columnBoard.get().getCreateTime(),
+                columnBoard.get().getModifiedTime(), columnBoard.get().getMember());
+
+        model.addAttribute("columnBoardDto", columnBoardDto);
+
+        return "board/columnuform";
+    }
+
+
+    @PostMapping ("/board/columnuform")
+    public String columnFormUpdate(@Valid ColumnBoardDto columnBoardDto, Errors errors, Model model, Authentication authentication) {
+
+        String username = authentication.getName();
+
+        if(errors.hasErrors()) {
+
+            Map<String, String> validatorResult = columnBoardService.validateHandling(errors);
+            for (String key : validatorResult.keySet()) {
+                model.addAttribute(key, validatorResult.get(key));
+            }
+            return "board/columnuform";
+        }
+
+        columnBoardService.updatePost(columnBoardDto, username);
+
+        return "redirect:/board/column";
+    }
 
 
 }

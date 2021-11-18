@@ -28,10 +28,7 @@ public class HomeController {
         return "board/home";
     }
 
-    @GetMapping("/board/column")
-    public String printColumnPage() {
-        return "board/column";
-    }
+
 
 
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/columnformcss.css}"/>
+    <title>MU General</title>
+</head>
+<body>
+<h2 class="form_title">게시글 작성</h2>
+
+<form th:action="@{/board/columnform}" method="POST" modelAttribute="columnBoardDto">
+    <div class="forms">
+        <div class="title_form">
+            <h4 class="title_txt">제목</h4>
+            <span class="error_text" th:text="${valid_title}"></span>
+            <input class="title_area" type="text" name="title">
+        </div>
+        <div class="content_form">
+            <h4 class="content_txt">내용</h4>
+            <span class="error_text" th:text="${valid_content}"></span>
+            <textarea class="content_area" name="content"placeholder=" 1000자 이내로 작성해 주세요."></textarea>
+        </div>
+        <div class="btns">
+            <button class="cancel_btn" type="button" th:onclick="@{location.href='/board/column'}">취소</button>
+            <button class="submit_btn" type="submit">작성</button>
+
+        </div>
+    </div>
+</form>
+<footer class="foot" th:replace="fragments/common :: footer">
+</footer>
+
+</body>
+</html>
