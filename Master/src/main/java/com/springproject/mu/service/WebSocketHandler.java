@@ -16,13 +16,34 @@ import java.util.List;
 @Component
 public class WebSocketHandler extends TextWebSocketHandler {
 
+    private static List<WebSocketSession> list = new ArrayList<>();
+
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         String payload = message.getPayload();
         log.info("payload {}", payload);
         TextMessage textMessage = new TextMessage("Welcome MU Chat Server~^^");
-        session.sendMessage(textMessage);
+
+        for(WebSocketSession sess : list) {
+            sess.sendMessage(message);
+        }
+
+        System.out.println(payload);
+    }
+
+    @Override
+    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+
+        list.add(session);
+
+        log.info(session + " 클라이언트 접속");
+    }
 
 
+    @Override
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+
+        log.info(session + " 클라이언트 접속 해제");
+        list.remove(session);
     }
 }
