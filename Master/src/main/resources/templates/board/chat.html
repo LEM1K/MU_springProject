@@ -1,39 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/columncss.css}"/>
+    <title>MU Chat</title>
 </head>
 <body>
-<input type="text" placeholder="보낼 메세지를 입력하세요." class="content">
-<button type="button" value="전송" class="sendBtn" onclick="sendMsg()">전송</button>
-<div>
-    <span>메세지</span>
-    <div class="msgArea"></div>
-</div>
+    <header th:replace="fragments/common :: header">
+
+    </header>
+    <div class="container">
+        <nav th:replace="fragments/common :: nav">
+
+        </nav>
+        <main class="main_content">
+            <div class="chat_content">
+                <div class="username_div">
+                    <p class="username" th:text="${#authentication.getName()}"></p>
+                </div>
+                <div class="msg_area">
+
+                </div>
+                <div>
+                    <input class="send_msg" type="text">
+                    <button class="send_btn" type="button">전송</button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    <footer th:replace="fragments/common :: footer">
+
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script th:inline="javascript">
+        $(document).ready(function () {
+
+            const username = [[${#authentication.principal.username}]];
+
+
+            const websocket = new WebSocket("ws://localhost:8080/board/chat");
+
+            websocket.onmessage = onMessage;
+            websocket.onopen = onOpen;
+            websocket.onclose = onClose;
+
+            $(".send_btn").on("click", (e) => {
+                send();
+            });
+
+            $(".send_msg").keydown(function (key) {
+                if(key.keyCode === 13) {
+                   send();
+                }
+            });
+
+
+            function send() {
+                var msg = document.querySelector(".send_msg");
+
+                if(msg.value === '') {
+                    alert("메시지를 입력하세요.");
+                }
+                else {
+                    console.log(username + " : " + msg.value);
+                    websocket.send(username + " : " + msg.value);
+                    msg.value = '';
+                }
+
+            }
+
+            function onClose(evt) {
+                var str = username + ": 님이 나가셨습니다.";
+                websocket.send(str);
+
+            }
+
+            function onOpen(evt) {
+                var str = username + ": 님이 입장하셨습니다.";
+                websocket.send(str);
+            }
+
+            function onMessage(msg) {
+                var data = msg.data;
+                var sessionId = null;
+
+                var message = null;
+                var arr = data.split(":");
+
+                for(var i = 0; i < arr.length; i++) {
+                    console.log('arr[' + i + '] : ' + arr[i]);
+                }
+
+                var cur_session = username;
+
+                console.log("cur_session : " + cur_session);
+
+                sessionId = arr[0];
+                message = arr[1];
+
+                console.log("sessionID : " + sessionId);
+                console.log("cur_session : " + cur_session);
+
+                if(sessionId == cur_session) {
+                    var str = "<div>";
+                    str += "<div>";
+                    str += "<p>" + sessionId + " : " + message + "</p>";
+                    str += "</div></div>";
+
+                    $(".msg_area").append(str);
+                }
+                else {
+                    var str = "<div>";
+                    str += "<div>";
+                    str += "<p>" + sessionId + " : " + message + "</p>";
+                    str += "</div></div>";
+
+                    $(".msg_area").append(str);
+                }
+            }
+        })
+    </script>
 </body>
-<script>
-    let socket = new WebSocket("ws://localhost:8080/websocket");
-
-    socket.onopen = function (e) {
-        console.log('open server!')
-    };
-
-    socket.onerror = function (e){
-        console.log(e);
-    }
-
-    socket.onmessage = function (e) {
-        console.log(e.data);
-        let msgArea = document.querySelector('.msgArea');
-        let newMsg = document.createElement('div');
-        newMsg.innerText=e.data;
-        msgArea.append(newMsg);
-    }
-
-    function sendMsg() {
-        let content=document.querySelector('.content').value;
-        socket.send(content);
-    }
-</script>
 </html>
