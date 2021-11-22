@@ -22,9 +22,10 @@ function onloadNavTransition() {
 }
 
 function onloadTableTransition() {
-    const table = document.querySelector(".list_table");
-
+    const table = document.querySelector(".list_table1");
+    const table2 = document.querySelector(".list_table2")
     table.style.width = "100%";
+    table2.style.width = "100%";
 }
 
 

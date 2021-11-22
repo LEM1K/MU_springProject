@@ -145,13 +145,16 @@ li {
     margin-bottom: 35px;
 }
 
-.list_table {
+.list_table1, .list_table2 {
     table-layout: fixed;
     transition:all 0.7s;
     width:50%;
     margin-left: 50px;
     margin-right: 50px;
+}
 
+.list_table1{
+    margin-bottom: 30px;
 }
 
 th {
@@ -164,14 +167,19 @@ th {
     font-size: 1.1rem;
 }
 
-td {
+td, td>a {
     font-family: 'Nanum Gothic Coding', monospace;
     text-overflow: ellipsis;
     overflow: hidden;
+    color: black;
     white-space: nowrap;
     text-align: center;
     height: 25px;
     font-size: 0.9rem;
+}
+
+td>a:active {
+    color: black;
 }
 
 .category {
@@ -289,7 +297,7 @@ td {
         font-size: 1.2rem;
     }
 
-    .list_table {
+    .list_table1, .list_table2 {
         width: 80%;
         margin:0px;
     }
@@ -299,6 +307,10 @@ td {
 
     td {
         font-size: 0.8rem;
+    }
+
+    footer{
+        margin-top: 300px;
     }
 }
 

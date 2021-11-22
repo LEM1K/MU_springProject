@@ -41,13 +41,44 @@
             </div>
             <div class="post_body">
                 <p class="post_content_txt">내용</p>
-                <p class="content" th:text="${columnBoard.content}"></p>
+
+                <pre class="content" th:text="${columnBoard.content}"></pre>
             </div>
         </div>
         <div class="edit_btns">
             <button class="delete_btn" type="button" onclick="onDelete()">삭제</button>
             <button class="update_btn" type="button" onclick="onUpdate()">수정</button>
         </div>
+        <div class="comment_content">
+            <div class="comment_head">
+                <p class="comment_txt">댓글</p>
+            </div>
+            <table class="comment_table">
+                <thead>
+                <tr>
+                    <th class="comment_writer_txt">작성자</th>
+                    <th class="comment_content_txt">내용</th>
+                    <th class="comment_content_modified">작성일</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="comment_writer">sample writer</td>
+                    <td class="comment_content">sample content</td>
+                    <td class="comment_modified">sample modified</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="comment_form">
+                <form>
+                    <input type="hidden">
+                    <textarea class="comment_area"></textarea>
+                    <button class="comment_btn" type="submit">댓글 작성</button>
+                </form>
+            </div>
+
+        </div>
+
     </main>
 </div>
 

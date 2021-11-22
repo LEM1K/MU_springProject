@@ -162,6 +162,8 @@ public class BoardController {
         String username = authentication.getName();
         model.addAttribute("columnBoardDto", columnBoardDto);
 
+        System.out.println(columnBoardDto.getContent());
+
         if(errors.hasErrors()) {
 
             Map<String, String> validatorResult = columnBoardService.validateHandling(errors);

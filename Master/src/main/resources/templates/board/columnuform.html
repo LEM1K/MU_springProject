@@ -26,7 +26,7 @@
         <div class="content_form">
             <h4 class="content_txt">내용</h4>
             <span class="error_text" th:text="${valid_content}"></span>
-            <textarea class="content_area" name="content"  th:text="${columnBoardDto.content}"></textarea>
+            <textarea class="content_area" name="content"  th:text="${columnBoardDto.content}" onkeypress="nextline()"></textarea>
         </div>
         <div class="btns">
             <button class="cancel_btn" type="button" th:onclick="@{location.href='/board/column'}">취소</button>
@@ -36,6 +36,14 @@
 </form>
 <footer class="foot" th:replace="fragments/common :: footer">
 </footer>
-
+<script th:inline="javascript">
+    function nextline() {
+        const key = event.keyCode;
+        const contentValue = document.querySelector('.content_area').textContent;
+        if(key === 13) {
+            contentValue += "<br/>"
+        }
+    }
+</script>
 </body>
 </html>

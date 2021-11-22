@@ -21,7 +21,7 @@
         <main class="main_content">
             <div class="list">
                 <h3 class="home_txt">홈</h3>
-                <table class="list_table">
+                <table class="list_table1">
                     <thead>
                     <tr class="table_header">
                         <th class="category">카테고리</th>
@@ -31,23 +31,30 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>sample C</td>
-                        <td>00</td>
-                        <td>Sample title Sample title Sample title</td>
-                        <td>Sample writer</td>
+                    <tr th:each="generalBoardlist : ${generalBoards}">
+                        <td>자유</td>
+                        <td th:text="${generalBoardlist.id}">00</td>
+                        <td><a th:text="${generalBoardlist.title}" th:href="@{/board/generaldetail(id=${generalBoardlist.id})}"></a></td>
+                        <td th:text="${generalBoardlist.member.username}">Sample writer</td>
                     </tr>
-                    <tr>
-                        <td>sample C</td>
-                        <td>00</td>
-                        <td>Sample title Sample title Sample title</td>
-                        <td>Sample writer</td>
+                    </tbody>
+                </table>
+
+                <table class="list_table2">
+                    <thead>
+                    <tr class="table_header">
+                        <th class="category">카테고리</th>
+                        <th class="number">번호</th>
+                        <th class="title">제목</th>
+                        <th class="writer">작성자</th>
                     </tr>
-                    <tr>
-                        <td>sample C</td>
-                        <td>00</td>
-                        <td>Sample title Sample title Sample title</td>
-                        <td>Sample writer</td>
+                    </thead>
+                    <tbody>
+                    <tr th:each="generalBoardlist : ${generalBoards}">
+                        <td>자유</td>
+                        <td th:text="${generalBoardlist.id}">00</td>
+                        <td><a th:text="${generalBoardlist.title}" th:href="@{/board/generaldetail(id=${generalBoardlist.id})}"></a></td>
+                        <td th:text="${generalBoardlist.member.username}">Sample writer</td>
                     </tr>
                     </tbody>
                 </table>
