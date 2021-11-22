@@ -2,8 +2,10 @@ package com.springproject.mu.controller;
 
 import com.springproject.mu.dto.MemberDto;
 import com.springproject.mu.model.Member;
+import com.springproject.mu.repos.MemberRepos;
 import com.springproject.mu.service.MemberService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,12 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
 public class MemberController {
 
     MemberService memberService;
+
+    MemberRepos memberRepos;
 
     MemberAPIController memberAPIController;
 
@@ -44,8 +49,17 @@ public class MemberController {
     }
 
     @GetMapping("/member/info")
-    public String memberInfo() {
-       return "member/info";
+    public String memberInfo(Authentication authentication, Model model) {
+
+        String username = authentication.getName();
+
+        Optional<Member> member = memberRepos.findByUsername(username);
+        Member memberinfo = member.get();
+
+        model.addAttribute("memberinfo", memberinfo);
+
+
+        return "member/info";
     }
 
 

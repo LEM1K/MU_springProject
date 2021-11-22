@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/infocss.css}"/>
+
+    <title>Welcome MU</title>
 </head>
 <body>
-  <h1>회원 정보</h1>
+    <header th:replace="fragments/common :: header">
+
+    </header>
+    <div class="container">
+        <nav class="navi" th:replace="fragments/common :: nav">
+
+        </nav>
+        <main class="main_content">
+            <h3 class="info_txt">회원 정보</h3>
+            <div class="member_info_div" modelAttribute="memberinfo">
+                <div class="member_info_username">
+                    <p class="member_username_txt">ID : </p>
+                    <p class="member_username" th:text="${memberinfo.username}"></p>
+                </div>
+                <div class="member_info_email">
+                    <p class="member_email_txt">E-MAIL : </p>
+                    <p class="member_email" th:text="${memberinfo.email}"></p>
+                </div>
+                <div class="member_info_phone">
+                    <p class="member_phone_txt">핸드폰 : </p>
+                    <p class="member_phone" th:text="${memberinfo.phone}"></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="foot" th:replace="fragments/common :: footer">
+
+    </footer>
+
 </body>
 </html>
