@@ -50,11 +50,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="generalBoardlist : ${generalBoards}">
-                        <td>자유</td>
-                        <td th:text="${generalBoardlist.id}">00</td>
-                        <td><a th:text="${generalBoardlist.title}" th:href="@{/board/generaldetail(id=${generalBoardlist.id})}"></a></td>
-                        <td th:text="${generalBoardlist.member.username}">Sample writer</td>
+                    <tr th:each="columnBoardlist : ${columnBoards}">
+                        <td>칼럼</td>
+                        <td th:text="${columnBoardlist.id}">00</td>
+                        <td><a th:text="${columnBoardlist.title}" th:href="@{/board/columndetail(id=${columnBoardlist.id})}"></a></td>
+                        <td th:text="${columnBoardlist.member.username}">Sample writer</td>
                     </tr>
                     </tbody>
                 </table>

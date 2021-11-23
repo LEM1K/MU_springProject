@@ -1,6 +1,8 @@
 package com.springproject.mu.controller;
 
+import com.springproject.mu.model.ColumnBoard;
 import com.springproject.mu.model.GeneralBoard;
+import com.springproject.mu.repos.ColumnBoardRepos;
 import com.springproject.mu.repos.GeneralBoardRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +19,9 @@ public class HomeController {
 
     @Autowired
     private GeneralBoardRepos generalBoardRepos;
+
+    @Autowired
+    private ColumnBoardRepos columnBoardRepos;
 
 
     @GetMapping("/")
@@ -38,8 +43,10 @@ public class HomeController {
     public String printMainPage(Model model1, Model model2) {
 
         List<GeneralBoard> generalBoards = generalBoardRepos.findTop10ByOrderByModifiedTimeDesc();
-        model1.addAttribute("generalBoards", generalBoards);
+        List<ColumnBoard> columnBoards = columnBoardRepos.findTop10ByOrderByModifiedTimeDesc();
 
+        model1.addAttribute("generalBoards", generalBoards);
+        model2.addAttribute("columnBoards", columnBoards);
 
         return "board/home";
     }

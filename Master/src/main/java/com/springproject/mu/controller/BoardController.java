@@ -3,12 +3,15 @@ package com.springproject.mu.controller;
 import com.springproject.mu.dto.ColumnBoardDto;
 import com.springproject.mu.dto.ColumnCommentDto;
 import com.springproject.mu.dto.GeneralBoardDto;
+import com.springproject.mu.dto.GeneralCommentDto;
 import com.springproject.mu.model.ColumnBoard;
 import com.springproject.mu.model.ColumnComment;
 import com.springproject.mu.model.GeneralBoard;
+import com.springproject.mu.model.GeneralComment;
 import com.springproject.mu.repos.ColumnBoardRepos;
 import com.springproject.mu.repos.ColumnCommentRepos;
 import com.springproject.mu.repos.GeneralBoardRepos;
+import com.springproject.mu.repos.GeneralCommentRepos;
 import com.springproject.mu.service.ColumnBoardService;
 import com.springproject.mu.service.GeneralBoardService;
 import lombok.AllArgsConstructor;
@@ -34,6 +37,8 @@ public class BoardController {
 
     GeneralBoardRepos generalBoardRepos;
 
+    GeneralCommentRepos generalCommentRepos;
+
     ColumnBoardService columnBoardService;
 
     ColumnBoardRepos columnBoardRepos;
@@ -56,11 +61,19 @@ public class BoardController {
     }
 
     @GetMapping("/board/generaldetail")
-    public String generalPostDetail(@RequestParam Long id, Model model) {
+    public String generalPostDetail(@RequestParam Long id, @PageableDefault(size = 8) Pageable pageable, Model model1, Model model2) {
 
-       Optional<GeneralBoard> generalBoard = generalBoardRepos.findById(id);
+        Optional<GeneralBoard> generalBoard = generalBoardRepos.findById(id);
 
-       model.addAttribute("generalBoard", generalBoard.get());
+        Page<GeneralComment> generalComment = generalCommentRepos.findAllByGeneralBoard(generalBoard.get(), pageable);
+
+        int startpage = 1;
+        int endpage = generalComment.getTotalPages();
+
+        model1.addAttribute("generalBoard", generalBoard.get());
+        model2.addAttribute("generalComment", generalComment);
+        model2.addAttribute("startpage", startpage);
+        model2.addAttribute("endpage", endpage);
 
         return "board/generaldetail";
     }
@@ -125,6 +138,20 @@ public class BoardController {
         generalBoardService.updatePost(generalBoardDto, username);
 
         return "redirect:/board/general";
+    }
+
+    @PostMapping("/board/generaldetail/comment")
+    public String insertGeneralComment(@RequestParam String id, GeneralCommentDto generalCommentDto, Model model, Authentication authentication) {
+
+        generalCommentDto.setId(null);
+
+
+        model.addAttribute("columnCommentDto", generalCommentDto);
+        String username = authentication.getName();
+
+        generalBoardService.insertComment(id, generalCommentDto, username);
+
+        return "redirect:/board/generaldetail?id=" + Long.parseLong(id);
     }
 
 
@@ -226,7 +253,9 @@ public class BoardController {
 
 
     @PostMapping("/board/columndetail/comment")
-    public String insertComment(@RequestParam String id, ColumnCommentDto columnCommentDto, Model model, Authentication authentication) {
+    public String insertColumnComment(@RequestParam String id, ColumnCommentDto columnCommentDto, Model model, Authentication authentication) {
+
+        columnCommentDto.setId(null);
 
         model.addAttribute("columnCommentDto", columnCommentDto);
         String username = authentication.getName();

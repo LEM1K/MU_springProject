@@ -48,6 +48,47 @@
                 <button class="delete_btn" type="button" onclick="onDelete()">삭제</button>
                 <button class="update_btn" type="button" onclick="onUpdate()">수정</button>
             </div>
+            <div class="comment_content">
+                <div class="comment_head">
+                    <p class="comment_txt">댓글</p>
+                </div>
+                <table class="comment_table">
+                    <thead>
+                    <tr>
+                        <th class="comment_writer_txt">작성자</th>
+                        <th class="comment_content_txt">내용</th>
+                        <th class="comment_content_modified">작성일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="generalComments : ${generalComment}">
+                        <td class="comment_writer" th:text="${generalComments.writer}">sample writer</td>
+                        <td class="comment_content" th:text="${generalComments.comment}">sample content</td>
+                        <td class="comment_modified" th:text="${#temporals.format(generalComments.commentCreateTime, 'yyyy-MM-dd HH:mm')}">sample modified</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="comment_form">
+                    <form method="post" th:action="@{/board/generaldetail/comment(id=${generalBoard.id})}">
+                        <textarea name="comment" class="comment_area"></textarea>
+                        <button class="comment_btn" type="submit">댓글 작성</button>
+                    </form>
+                </div>
+                <div class="comment_pageable">
+                    <ul class="comment_pageable_list">
+                        <li class="comment_prev"  th:classappend="${1 == generalComment.pageable.pageNumber + 1} ? 'disabled'">
+                            <a th:href="@{/board/generaldetail(id=${generalBoard.id}, page=${generalComment.pageable.pageNumber - 1})}"><<</a>
+                        </li>
+                        <li class="comment_cur" th:if="${generalComment.totalPages}>1" th:each="i : ${#numbers.sequence(startpage, generalComment.totalPages)}">
+                            <a th:href="@{/board/generaldetail(id=${generalBoard.id}, page=${i - 1})}" th:text="${i}" >1</a>
+                        </li >
+                        <li class="comment_next" th:classappend="${generalComment.totalPages == generalComment.pageable.pageNumber + 1} ? 'disabled'">
+                            <a th:href="@{/board/generaldetail(id=${generalBoard.id}, page=${generalComment.pageable.pageNumber + 1})}">>></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
         </main>
     </div>
 

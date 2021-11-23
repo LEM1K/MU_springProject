@@ -1,9 +1,11 @@
 package com.springproject.mu.service;
 
+import com.springproject.mu.dto.ColumnCommentDto;
 import com.springproject.mu.dto.GeneralBoardDto;
-import com.springproject.mu.model.GeneralBoard;
-import com.springproject.mu.model.Member;
+import com.springproject.mu.dto.GeneralCommentDto;
+import com.springproject.mu.model.*;
 import com.springproject.mu.repos.GeneralBoardRepos;
+import com.springproject.mu.repos.GeneralCommentRepos;
 import com.springproject.mu.repos.MemberRepos;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class GeneralBoardService {
 
     @Autowired
     private GeneralBoardRepos generalBoardRepos;
+
+    @Autowired
+    private GeneralCommentRepos generalCommentRepos;
 
     @Autowired
     private MemberRepos memberRepos;
@@ -58,6 +63,19 @@ public class GeneralBoardService {
         generalBoardRepos.save(generalBoard);
     }
 
+
+    public void insertComment(String id, GeneralCommentDto generalCommentDto, String username) {
+
+        GeneralComment generalComment = generalCommentDto.toEntity();
+
+        Optional<GeneralBoard> generalBoard = generalBoardRepos.findById(Long.parseLong(id));
+        generalComment.setGeneralBoard(generalBoard.get());
+        generalComment.setWriter(username);
+        generalComment.setCommentCreateTime(LocalDateTime.now());
+
+        generalCommentRepos.save(generalComment);
+
+    }
 
     public int writerCheck(String username, String writer) {
         if(username.equals(writer)) {

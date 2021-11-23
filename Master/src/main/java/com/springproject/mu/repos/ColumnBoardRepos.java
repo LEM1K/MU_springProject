@@ -15,5 +15,6 @@ public interface ColumnBoardRepos extends JpaRepository<ColumnBoard, Long> {
 
     Page<ColumnBoard> findByTitleContaining(String title, Pageable pageable);
 
+    List<ColumnBoard> findTop10ByOrderByModifiedTimeDesc();
 
 }
