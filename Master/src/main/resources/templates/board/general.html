@@ -46,7 +46,7 @@
         <li class="prev_page" th:classappend="${1 == generalBoards.pageable.pageNumber + 1} ? 'disabled'">
           <a class="prev_page_anchor" th:href="@{/board/general(page=${generalBoards.pageable.pageNumber - 1}, searchText=${param.searchText})}"><<</a>
         </li>
-        <li class="page_num" th:each="i : ${#numbers.sequence(startpage, endpage)}">
+        <li class="page_num" th:if="${generalBoards.totalPages}>1" th:each="i : ${#numbers.sequence(startpage, endpage)}">
           <a class="page_num_anchor" th:href="@{/board/general(page=${i - 1}, searchText=${param.searchText})}" th:text="${i}">1</a>
         </li>
         <li class="next_page" th:classappend="${generalBoards.totalPages == generalBoards.pageable.pageNumber + 1} ? 'disabled'">

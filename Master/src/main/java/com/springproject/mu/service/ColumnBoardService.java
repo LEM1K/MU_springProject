@@ -1,11 +1,14 @@
 package com.springproject.mu.service;
 
 import com.springproject.mu.dto.ColumnBoardDto;
+import com.springproject.mu.dto.ColumnCommentDto;
 import com.springproject.mu.dto.GeneralBoardDto;
 import com.springproject.mu.model.ColumnBoard;
+import com.springproject.mu.model.ColumnComment;
 import com.springproject.mu.model.GeneralBoard;
 import com.springproject.mu.model.Member;
 import com.springproject.mu.repos.ColumnBoardRepos;
+import com.springproject.mu.repos.ColumnCommentRepos;
 import com.springproject.mu.repos.GeneralBoardRepos;
 import com.springproject.mu.repos.MemberRepos;
 import lombok.AllArgsConstructor;
@@ -25,6 +28,9 @@ public class ColumnBoardService {
 
     @Autowired
     private ColumnBoardRepos columnBoardRepos;
+
+    @Autowired
+    private ColumnCommentRepos columnCommentRepos;
 
     @Autowired
     private MemberRepos memberRepos;
@@ -62,6 +68,19 @@ public class ColumnBoardService {
     }
 
 
+    public void insertComment(String id, ColumnCommentDto columnCommentDto, String username) {
+
+        ColumnComment columnComment = columnCommentDto.toEntity();
+
+        Optional<ColumnBoard> columnBoard = columnBoardRepos.findById(Long.parseLong(id));
+        columnComment.setColumnBoard(columnBoard.get());
+        columnComment.setWriter(username);
+        columnComment.setCommentCreateTime(LocalDateTime.now());
+
+        columnCommentRepos.save(columnComment);
+
+    }
+
     public int writerCheck(String username, String writer) {
         if(username.equals(writer)) {
             return 1;
@@ -82,6 +101,7 @@ public class ColumnBoardService {
 
         return validatorResult;
     }
+
 
 
 

@@ -62,19 +62,31 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="comment_writer">sample writer</td>
-                    <td class="comment_content">sample content</td>
-                    <td class="comment_modified">sample modified</td>
+                <tr th:each="columnComments : ${columnComment}">
+                    <td class="comment_writer" th:text="${columnComments.writer}">sample writer</td>
+                    <td class="comment_content" th:text="${columnComments.comment}">sample content</td>
+                    <td class="comment_modified" th:text="${#temporals.format(columnComments.commentCreateTime, 'yyyy-MM-dd HH:mm')}">sample modified</td>
                 </tr>
                 </tbody>
             </table>
             <div class="comment_form">
-                <form>
-                    <input type="hidden">
-                    <textarea class="comment_area"></textarea>
+                <form method="post" th:action="@{/board/columndetail/comment(id=${columnBoard.id})}" modelAttribute="columnCommentDto">
+                    <textarea name="comment" class="comment_area"></textarea>
                     <button class="comment_btn" type="submit">댓글 작성</button>
                 </form>
+            </div>
+            <div class="comment_pageable">
+                <ul class="comment_pageable_list">
+                    <li class="comment_prev"  th:classappend="${1 == columnComment.pageable.pageNumber + 1} ? 'disabled'">
+                        <a th:href="@{/board/columndetail(id=${columnBoard.id}, page=${columnComment.pageable.pageNumber - 1})}"><<</a>
+                    </li>
+                    <li class="comment_cur" th:if="${columnComment.totalPages}>1" th:each="i : ${#numbers.sequence(startpage, columnComment.totalPages)}">
+                        <a th:href="@{/board/columndetail(id=${columnBoard.id}, page=${i - 1})}" th:text="${i}" >1</a>
+                    </li >
+                    <li class="comment_next" th:classappend="${columnComment.totalPages == columnComment.pageable.pageNumber + 1} ? 'disabled'">
+                        <a th:href="@{/board/columndetail(id=${columnBoard.id}, page=${columnComment.pageable.pageNumber + 1})}">>></a>
+                    </li>
+                </ul>
             </div>
 
         </div>

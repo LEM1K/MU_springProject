@@ -8,6 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -38,6 +39,9 @@ public class ColumnBoard {
     @JoinColumn(name = "username")
     private Member member;
 
+
+    @OneToMany(mappedBy = "columnBoard", cascade = CascadeType.ALL)
+    private List<ColumnComment> columnComments;
 
     @Builder
     public ColumnBoard(Long id, String title, String content, String category,
