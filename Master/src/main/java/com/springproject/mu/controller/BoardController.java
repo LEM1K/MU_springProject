@@ -141,13 +141,22 @@ public class BoardController {
     }
 
     @PostMapping("/board/generaldetail/comment")
-    public String insertGeneralComment(@RequestParam String id, GeneralCommentDto generalCommentDto, Model model, Authentication authentication) {
+    public String insertGeneralComment(@RequestParam String id, @Valid GeneralCommentDto generalCommentDto, Errors errors, Model model, Authentication authentication) {
 
         generalCommentDto.setId(null);
 
 
         model.addAttribute("columnCommentDto", generalCommentDto);
         String username = authentication.getName();
+
+        if(errors.hasErrors()) {
+
+            Map<String, String> validatorResult = generalBoardService.validateHandling(errors);
+            for (String key : validatorResult.keySet()) {
+                model.addAttribute(key, validatorResult.get(key));
+            }
+            return "redirect:/board/generaldetail?id=" + Long.parseLong(id);
+        }
 
         generalBoardService.insertComment(id, generalCommentDto, username);
 
@@ -253,12 +262,22 @@ public class BoardController {
 
 
     @PostMapping("/board/columndetail/comment")
-    public String insertColumnComment(@RequestParam String id, ColumnCommentDto columnCommentDto, Model model, Authentication authentication) {
+    public String insertColumnComment(@Valid ColumnCommentDto columnCommentDto, Errors errors, @RequestParam String id, Model model, Authentication authentication) {
 
         columnCommentDto.setId(null);
 
-        model.addAttribute("columnCommentDto", columnCommentDto);
         String username = authentication.getName();
+        model.addAttribute("columnCommentDto", columnCommentDto);
+
+        if(errors.hasErrors()) {
+
+            Map<String, String> validatorResult = columnBoardService.validateHandling(errors);
+            for (String key : validatorResult.keySet()) {
+                model.addAttribute(key, validatorResult.get(key));
+            }
+
+            return "redirect:/board/columndetail?id=" + Long.parseLong(id);
+        }
 
         columnBoardService.insertComment(id, columnCommentDto, username);
 

@@ -5,6 +5,8 @@ import com.springproject.mu.model.Member;
 import com.springproject.mu.repos.MemberRepos;
 import com.springproject.mu.service.MemberService;
 import lombok.AllArgsConstructor;
+import org.apache.catalina.SessionEvent;
+import org.apache.catalina.SessionListener;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -61,6 +65,23 @@ public class MemberController {
 
         return "member/info";
     }
+
+    @GetMapping("/admin/memberManager")
+    public String getAdminPage(Model model) {
+
+        List<Member> memberList = memberRepos.findAll();
+
+        model.addAttribute("members", memberList);
+
+        return "admin/memberManager";
+    }
+
+    @GetMapping("/admin/forbidden")
+    public String getForbiddenPage() {
+        return "admin/forbidden";
+    }
+
+
 
 
 }

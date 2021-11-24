@@ -37,7 +37,7 @@ public class MemberService {
         Member member = memberDto.toEntity();
 
         Role role = new Role();
-        role.setId(1L);
+        role.setId(2L);
         member.getRoles().add(role);
         return memberRepos.save(member);
     }
@@ -72,6 +72,7 @@ public class MemberService {
         for (FieldError error : errors.getFieldErrors()) {
             String validKeyName = String.format("valid_%s", error.getField());
             validatorResult.put(validKeyName, error.getDefaultMessage());
+
         }
 
         return validatorResult;

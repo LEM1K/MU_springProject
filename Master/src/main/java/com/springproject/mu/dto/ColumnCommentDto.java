@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Getter
@@ -17,6 +19,7 @@ public class ColumnCommentDto {
 
     private Long id;
 
+    @NotBlank(message = "내용을 채워 주세요.")
     private String comment;
 
     private String writer;

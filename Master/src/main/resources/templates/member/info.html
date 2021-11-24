@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible">
@@ -33,6 +33,9 @@
                 <div class="member_info_phone">
                     <p class="member_phone_txt">핸드폰 : </p>
                     <p class="member_phone" th:text="${memberinfo.phone}"></p>
+                </div>
+                <div class="member_manager">
+                    <button type="button" class="member_manager_btn" sec:authorize="hasRole('ROLE_ADMIN')" th:onclick="@{location.href='/admin/memberManager'}">관리자 페이지</button>
                 </div>
             </div>
         </main>

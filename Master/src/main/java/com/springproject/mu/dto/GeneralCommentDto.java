@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Getter
@@ -20,6 +21,7 @@ public class GeneralCommentDto {
 
     private Long id;
 
+    @NotBlank(message = "내용을 채워 주세요.")
     private String comment;
 
     private String writer;

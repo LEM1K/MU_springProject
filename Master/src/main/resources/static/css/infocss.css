@@ -141,6 +141,9 @@ li {
 
 .member_info_div {
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .member_info_username {
@@ -204,6 +207,28 @@ li {
     color: darkblue;
     font-weight: bold;
     font-size: 1.5rem;
+}
+
+.member_manager {
+    margin-top: 50px;
+}
+
+.member_manager_btn {
+    transition: 0.8s all;
+    color: darkblue;
+    background-color: white;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    width:200px;
+    height: 40px;
+    border:none;
+    border-radius: 5px;
+}
+
+.member_manager_btn:hover {
+    color: floralwhite;
+    background-color: darkblue;
 }
 
 

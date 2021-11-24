@@ -23,7 +23,7 @@
         <div class="content_form">
             <h4 class="content_txt">내용</h4>
             <span class="error_text" th:text="${valid_content}"></span>
-            <textarea class="content_area" name="content"placeholder=" 1000자 이내로 작성해 주세요." onkeypress="nextline()"></textarea>
+            <textarea class="content_area" name="content" placeholder=" 1000자 이내로 작성해 주세요." onkeypress="nextline()"></textarea>
         </div>
         <div class="btns">
             <button class="cancel_btn" type="button" th:onclick="@{location.href='/board/column'}">취소</button>

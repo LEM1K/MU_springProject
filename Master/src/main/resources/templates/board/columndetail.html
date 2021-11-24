@@ -70,8 +70,9 @@
                 </tbody>
             </table>
             <div class="comment_form">
+                <!--<span class="error_text" id="comment" th:text="${valid_comment}"></span>-->
                 <form method="post" th:action="@{/board/columndetail/comment(id=${columnBoard.id})}" modelAttribute="columnCommentDto">
-                    <textarea name="comment" class="comment_area"></textarea>
+                    <textarea name="comment" class="comment_area" th:value="${valid_comment}"></textarea>
                     <button class="comment_btn" type="submit">댓글 작성</button>
                 </form>
             </div>
@@ -99,6 +100,7 @@
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script th:inline="javascript">
+
     function onDelete() {
         /*<![CDATA[*/
         let postId = /*[[ ${columnBoard.id} ]]*/;

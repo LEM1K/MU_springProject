@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Staatliches&display=swap" rel="stylesheet">
+
+    <title>403 Forbidden</title>
+    <style>
+        *{
+            color: red;
+            background-color: floralwhite;
+            align-content: center;
+            justify-content: center;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            text-align: center;
+        }
+        img {
+            display: block;
+            margin: auto;
+            width: 30%;
+            height: 30%;
+        }
+        h1 {
+            font-family: 'Staatliches', cursive;
+            font-size:3rem;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img th:src="@{/img/forbidden.png}" alt="x">
+        <h1>403 FORBIDDEN</h1>
+    </div>
+
+</body>
+</html>

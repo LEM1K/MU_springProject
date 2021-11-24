@@ -54,9 +54,14 @@
             const username_div = document.querySelector('.username');
             username_div.textContent = "접속 사용자 이름 : " + username;
 
+            //local
             const websocket = new WebSocket("ws://localhost:8080/board/chat");
+
+            //aws
             //const websocket = new WebSocket("ws://3.132.214.113/board/chat");
 
+            //azure
+            //const websocket = new WebSocket("ws://20.196.192.247/board/chat");
 
 
             websocket.onmessage = onMessage;
