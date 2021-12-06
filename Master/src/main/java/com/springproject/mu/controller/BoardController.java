@@ -46,7 +46,8 @@ public class BoardController {
     ColumnCommentRepos columnCommentRepos;
 
     @GetMapping("/board/general")
-    public String printGeneralPage(Model model, @PageableDefault(size = 10) Pageable pageable, @RequestParam(required = false, defaultValue = "") String searchText) {
+    public String printGeneralPage(Model model, @PageableDefault(size = 10) Pageable pageable,
+                                   @RequestParam(required = false, defaultValue = "") String searchText) {
 
         //Page<GeneralBoard> generalBoards = generalBoardRepos.findAll(pageable);
         Page<GeneralBoard> generalBoards = generalBoardRepos.findByTitleContaining(searchText, pageable);
@@ -61,7 +62,8 @@ public class BoardController {
     }
 
     @GetMapping("/board/generaldetail")
-    public String generalPostDetail(@RequestParam Long id, @PageableDefault(size = 8) Pageable pageable, Model model1, Model model2) {
+    public String generalPostDetail(@RequestParam Long id,
+                                    @PageableDefault(size = 8) Pageable pageable, Model model1, Model model2) {
 
         Optional<GeneralBoard> generalBoard = generalBoardRepos.findById(id);
 
@@ -141,7 +143,8 @@ public class BoardController {
     }
 
     @PostMapping("/board/generaldetail/comment")
-    public String insertGeneralComment(@RequestParam String id, @Valid GeneralCommentDto generalCommentDto, Errors errors, Model model, Authentication authentication) {
+    public String insertGeneralComment(@RequestParam String id, @Valid GeneralCommentDto generalCommentDto,
+                                       Errors errors, Model model, Authentication authentication) {
 
         generalCommentDto.setId(null);
 

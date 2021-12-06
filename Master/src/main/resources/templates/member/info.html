@@ -35,7 +35,8 @@
                     <p class="member_phone" th:text="${memberinfo.phone}"></p>
                 </div>
                 <div class="member_manager">
-                    <button type="button" class="member_manager_btn" sec:authorize="hasRole('ROLE_ADMIN')" th:onclick="@{location.href='/admin/memberManager'}">관리자 페이지</button>
+                    <button type="button" class="member_manager_btn" sec:authorize="hasRole('ROLE_ADMIN')"
+                            th:onclick="@{location.href='/admin/memberManager'}">관리자 페이지</button>
                 </div>
             </div>
         </main>

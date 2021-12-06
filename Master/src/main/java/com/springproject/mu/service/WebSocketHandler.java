@@ -17,7 +17,7 @@ import java.util.List;
 public class WebSocketHandler extends TextWebSocketHandler {
 
     private static List<WebSocketSession> list = new ArrayList<>();
-    ;
+
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {

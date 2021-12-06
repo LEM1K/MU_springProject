@@ -25,7 +25,8 @@ public class BoardAPIController {
 
 
     @DeleteMapping("/board/generaldelete")
-    public int generalDelete(@RequestParam("postId") String postId, @RequestParam("postwriter") String postwriter, Authentication authentication) {
+    public int generalDelete(@RequestParam("postId") String postId,
+                             @RequestParam("postwriter") String postwriter, Authentication authentication) {
 
         int count = 0;
         String username = authentication.getName();
@@ -40,7 +41,8 @@ public class BoardAPIController {
     }
 
     @GetMapping("/board/generalupdate")
-    public int generalUpdate(@RequestParam("postId") String postId, @RequestParam("postwriter") String postwriter, Authentication authentication) {
+    public int generalUpdate(@RequestParam("postId") String postId,
+                             @RequestParam("postwriter") String postwriter, Authentication authentication) {
         int count = 0;
         String username = authentication.getName();
 

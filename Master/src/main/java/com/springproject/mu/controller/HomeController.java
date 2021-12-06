@@ -49,8 +49,4 @@ public class HomeController {
         return "board/home";
     }
 
-
-
-
-
 }
